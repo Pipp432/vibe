@@ -18,8 +18,8 @@ const config: Config = {
 				"error-hover": "#E75D5D",
 				neutral: "#4F5BC0",
 				"neutral-hover": "#737ABE",
-				white: "#FFFFFF",
-				black: "#000000",
+				"text-white": "#F4F4FC",
+				"text-black": "#000000",
 			},
 			backgroundImage: {
 				"gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
