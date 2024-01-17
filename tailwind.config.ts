@@ -20,6 +20,7 @@ const config: Config = {
 				"neutral-hover": "#737ABE",
 				"text-white": "#F4F4FC",
 				"text-black": "#000000",
+				subTab: "#B0B0B0",
 			},
 			backgroundImage: {
 				"gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
