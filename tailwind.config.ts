@@ -8,6 +8,12 @@ const config: Config = {
 	],
 	theme: {
 		extend: {
+      fontSize: {
+      header: '30px',
+      subheader: '24px',
+      body: '18px',
+      'details': '14px',
+      },
 			colors: {
 				background: "#F4F4FC",
 				primary: "#2F3855",
