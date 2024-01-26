@@ -1,3 +1,4 @@
+import CardWrapper from "../../components/general/CardWrapper"
 export default function Home() {
-  return <div className='text-3xl'>Hi Mom</div>;
+  return <CardWrapper><div className="w-20 h-20"></div></CardWrapper>
 }
