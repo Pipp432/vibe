@@ -10,8 +10,12 @@ export default function RootLayout({
     <html lang='en'>
 
       <body className='bg-background'>
+       <div className="h-[100vh] flex flex-row">
         <NavigationTab />
+          <div>
         {children}
+          </div>
+       </div> 
       </body>
     </html>
   );
