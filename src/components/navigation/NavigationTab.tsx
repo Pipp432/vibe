@@ -29,7 +29,10 @@ function NavigationTab() {
   }
   return (
     <div className='w-72 h-full bg-primary relative'>
-      <SelectionIndicator position={"0"} reference={indicator} />
+      <div className='translate-y-64'>
+
+      <SelectionIndicator  reference={indicator} />
+      </div>
       <div className='cursor-pointer my-4 flex flex-col gap-20 items-center text-2xl'>
 
         <Image src={logo} width={160} height={60} alt='logo' />

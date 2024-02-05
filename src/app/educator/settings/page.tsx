@@ -1,8 +1,9 @@
+import { SettingsNavigation } from '@/components/settings/SettingsNavigation'
 import React from 'react'
 
 function page() {
   return (
-    <div>page</div>
+    <div><SettingsNavigation/></div>
   )
 }
 

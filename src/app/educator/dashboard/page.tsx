@@ -3,7 +3,6 @@ export default function DashboardPage(){
   return(
     <div className=" relative grid">
 
-  <CardWrapper><div>Hello</div></CardWrapper>
     </div>
   )
 }
