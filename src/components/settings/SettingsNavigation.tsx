@@ -2,10 +2,11 @@
 import React ,{useRef,useState}from 'react'
 import SelectionIndicator from '../navigation/SelectionIndicator'
 
+import { useRouter } from 'next/navigation'
 export const SettingsNavigation = () => {
   
   const indicator = useRef<HTMLDivElement>(null);
-  
+  const router =  useRouter(); 
   const [currentSelection, setCurrentSelection] = useState(0);
   const changeIndicatorPosition = (changePosition: number) => {
 
@@ -19,7 +20,7 @@ export const SettingsNavigation = () => {
       if (currentSelection > changePosition) {
 
         indicator.current.style.top = parseFloat(indicator.current.style.top.replace("rem", ""))
-          + (8 * (changePosition - currentSelection)) + "rem"
+          + (7.5 * (changePosition - currentSelection)) + "rem"
         setCurrentSelection(changePosition)
       }
     }
@@ -33,10 +34,11 @@ export const SettingsNavigation = () => {
       <div className='p-10 justify-center items-center flex flex-col gap-20 text-2xl text-white'>
         <div className='mt-2'></div>
         <div className='cursor-pointer' onClick={()=>{
+         router.push("/educator/settings/account")
           changeIndicatorPosition(0)
         }} >Account</div>
         <div className='cursor-pointer' onClick={()=>{
-          
+          router.push("/educator/settings/information")
           changeIndicatorPosition(1)}
         }>Information</div>
       </div>      

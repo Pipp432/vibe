@@ -43,8 +43,12 @@ function NavigationTab() {
         }} />
         <NavigationItem name={"Analysis"} onClick={() => {
           changeIndicatorPosition(1)
+          router.push("/educator/analysis")
         }} />
-        <NavigationItem name={"Courses"} onClick={() => { changeIndicatorPosition(2) }} />
+        <NavigationItem name={"Courses"} onClick={() => { 
+          
+          router.push("/educator/courses")
+          changeIndicatorPosition(2) }} />
         <NavigationItem name={"Settings"} onClick={() => {
           changeIndicatorPosition(3)
           router.push("/educator/settings")
