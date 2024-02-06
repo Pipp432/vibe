@@ -1,0 +1,14 @@
+import React from 'react'
+
+function AccountSettingsPage() {
+  return (
+    <>
+      <div className='flex flex-col mt-32 mx-6 gap-y-4'>
+        <div className='text-3xl'>Profile</div>
+        <div className='text-lg '>Photo</div>
+      </div>
+    </>
+  )
+}
+
+export default AccountSettingsPage
