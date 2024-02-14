@@ -31,7 +31,7 @@ function NavigationTab() {
     <div className='w-72 h-full bg-primary relative'>
       <div className='translate-y-64'>
 
-      <SelectionIndicator  reference={indicator} />
+        <SelectionIndicator reference={indicator} />
       </div>
       <div className='cursor-pointer my-4 flex flex-col gap-20 items-center text-2xl'>
 
@@ -45,13 +45,14 @@ function NavigationTab() {
           changeIndicatorPosition(1)
           router.push("/educator/analysis")
         }} />
-        <NavigationItem name={"Courses"} onClick={() => { 
-          
+        <NavigationItem name={"Courses"} onClick={() => {
+
           router.push("/educator/courses")
-          changeIndicatorPosition(2) }} />
+          changeIndicatorPosition(2)
+        }} />
         <NavigationItem name={"Settings"} onClick={() => {
           changeIndicatorPosition(3)
-          router.push("/educator/settings")
+          router.push("/educator/settings/account")
         }
         } />
 
