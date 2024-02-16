@@ -14,6 +14,9 @@ const config: Config = {
       body: '18px',
       'details': '14px',
       },
+      animation:{
+        'spin-slow':'spin 2s linear infinite'
+      },
 			colors: {
 				background: "#F4F4FC",
 				primary: "#2F3855",

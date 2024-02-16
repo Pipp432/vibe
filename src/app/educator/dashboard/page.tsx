@@ -2,10 +2,11 @@
 import Button from "@/components/general/Button"
 
 import CardWrapper from"../../../components/general/CardWrapper"
+import LoadingPage from "@/components/loading/LoadingPage"
 export default function DashboardPage(){
   return(
-    <div className="">
-      <Button type='view' onClickHandler={()=>{console.log("hi")}}/>
+    <div>
+      <LoadingPage/>
     </div>
   )
 }
