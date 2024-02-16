@@ -14,8 +14,15 @@ const config: Config = {
       body: '18px',
       'details': '14px',
       },
+      keyframes: {
+        "fade-in":{
+          "0%":{opacity:"0"},
+          "100%":{opacity:"1"}
+        }
+      },
       animation:{
         'spin-slow':'spin 2s linear infinite'
+        ,'fade-in':'fade-in 1s linear'
       },
 			colors: {
 				background: "#F4F4FC",
