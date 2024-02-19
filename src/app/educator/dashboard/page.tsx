@@ -6,7 +6,6 @@ import LoadingPage from "@/components/loading/LoadingPage"
 export default function DashboardPage(){
   return(
     <div>
-      <LoadingPage/>
     </div>
   )
 }
