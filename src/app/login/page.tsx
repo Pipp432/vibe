@@ -3,11 +3,7 @@ import Image from "next/image";
 import logo from "../../../public/images/logo.png";
 import LoginInput from "../../components/login/LoginInput";
 import BigButton from "@/components/general/BigButton";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
 import LoadingPage from "@/components/loading/LoadingPage";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import app from "@/firebase";
 import useLogin from "@/hooks/useLogin";
 export default function LoginPage() {
   const { loginFunction, loginState } = useLogin();
