@@ -1,6 +1,6 @@
 import "../../app/globals.css";
 import NavigationTab from "@/components/navigation/NavigationTab";
-
+import Profile from "@/components/profile/Profile"
 export default function RootLayout({
   children,
 }: {
@@ -13,6 +13,7 @@ export default function RootLayout({
        <div className="h-[100vh] flex flex-row">
         <NavigationTab />
           <div>
+            <div className="flex flex-row-reverse absolute w-[83vw]"><Profile/></div>
         {children}
           </div>
        </div> 
