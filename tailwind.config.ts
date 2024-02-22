@@ -37,6 +37,7 @@ const config: Config = {
 				"text-white": "#F4F4FC",
 				"text-black": "#000000",
 				subTab: "#B0B0B0",
+        "popup-background":"#D9D9D9"
 			},
 			backgroundImage: {
 				"gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
