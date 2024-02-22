@@ -13,6 +13,7 @@ function ProfileMenu() {
       router.replace("/login")
     }
     catch{
+    
     }
   
   }

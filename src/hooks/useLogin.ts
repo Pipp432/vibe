@@ -17,8 +17,8 @@ export default function useLogin() {
     try {
       await signInWithEmailAndPassword(auth, username, password)
 
-      setIsLoading(false)
 
+      setIsLoading(false)
       router.push("/educator/dashboard");
     }
     catch (e) {
