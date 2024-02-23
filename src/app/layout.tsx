@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "../../public/images/logo.png";
-
-
 export const metadata: Metadata = {
 	title: "VIBE: Evaluation to Emotion",
 	description: "A website for educators",
