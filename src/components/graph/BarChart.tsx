@@ -1,12 +1,12 @@
-// src/components/PieChart.js
-import React from "react";
-import { Pie } from "react-chartjs-2";
 
-function PieChart({ chartData}:{chartData:any}) {
+import React from "react";
+import { Bar} from "react-chartjs-2";
+
+function BarChart({ chartData}:{chartData:any}) {
   return (
     <div>
       <h2 style={{ textAlign: "center" }}>Pie Chart</h2>
-      <Pie
+      <Bar
         data={chartData}
         options={{
           plugins: {
@@ -20,4 +20,4 @@ function PieChart({ chartData}:{chartData:any}) {
     </div>
   );
 }
-export default PieChart;
+export default BarChart;

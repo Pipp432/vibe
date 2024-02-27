@@ -8,6 +8,7 @@ import { Data } from "@/data/data";
 import PieChart from "@/components/graph/PieChart"
 import CardWrapper from "../../../components/general/CardWrapper"
 import ProgressStatus from "@/components/graph/ProgressStatus";
+import BarChart from "@/components/graph/BarChart";
 const options = {
   tooltips: {
     enabled: false
@@ -51,7 +52,7 @@ export default function DashboardPage() {
   return (
     <div>
       <CardWrapper>
-        <PieChart chartData={chartData} />
+        <BarChart chartData={chartData}/>
       </CardWrapper>
 
       <CardWrapper>
