@@ -1,5 +1,4 @@
 'use client'
-import Button from "@/components/general/Button"
 
 import Chart from "chart.js/auto";
 import { CategoryScale } from "chart.js";
@@ -8,8 +7,7 @@ import { useState } from "react";
 import { Data } from "@/data/data";
 import PieChart from "@/components/graph/PieChart"
 import CardWrapper from "../../../components/general/CardWrapper"
-import LoadingPage from "@/components/loading/LoadingPage";
-var options = {
+const options = {
   tooltips: {
     enabled: false
   },
