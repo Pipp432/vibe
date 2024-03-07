@@ -18,7 +18,7 @@ function ProgressStatus({ status,courseName }: { status: string, courseName:stri
   }
   const colors = statusToColor();
   return (
-    <div className='flex flex-row gap-6 text-lg justify-center items-center'>
+    <div className='flex flex-row gap-6 text-md items-center '>
       {courseName}
       <div className='flex flex-row gap-2'>
         {colors.map((color) => { return <ProgressStatusCircle color={color} /> })}

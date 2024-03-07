@@ -5,10 +5,11 @@ import { CategoryScale } from "chart.js";
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { useState } from "react";
 import { Data } from "@/data/data";
-import PieChart from "@/components/graph/PieChart"
 import CardWrapper from "../../../components/general/CardWrapper"
 import ProgressStatus from "@/components/graph/ProgressStatus";
 import BarChart from "@/components/graph/BarChart";
+import InformationButton from "@/components/general/InformationButton";
+import EmotionRankChart from "@/components/graph/EmotionRankChart";
 const options = {
   tooltips: {
     enabled: false
@@ -50,14 +51,53 @@ export default function DashboardPage() {
     ], options: options
   });
   return (
-    <div>
+    <div className="flex flex-col p-20 gap-52">
+
+
       <CardWrapper>
-        <BarChart chartData={chartData}/>
+        <div className="w-[30rem]">
+          <div className="flex flex-col gap-8">
+            <div className="flex flex-row gap-2 items-center">
+              <div className="text-lg">{"Analysis Progress"}</div>
+              <InformationButton />
+            </div>
+            <div className="flex flex-row gap-5">
+              <div className="flex flex-col gap-5">
+                <ProgressStatus courseName="Intro Sto Mod" status="processing" />
+                <ProgressStatus courseName="Intro Sto Mod" status="processing" />
+                <ProgressStatus courseName="Intro Sto Mod" status="processing" />
+                <ProgressStatus courseName="Intro Sto Mod" status="processing" />
+              </div>
+              <div className="flex flex-col gap-5">
+                <ProgressStatus courseName="Intro Sto Mod" status="processing" />
+                <ProgressStatus courseName="Intro Sto Mod" status="processing" />
+                <ProgressStatus courseName="Intro Sto Mod" status="processing" />
+                <ProgressStatus courseName="Intro Sto Mod" status="processing" />
+              </div>
+            </div>
+          </div>
+
+        </div>
       </CardWrapper>
 
       <CardWrapper>
-        <ProgressStatus courseName ="Intro Sto Mod" status="processing"/>
-      </CardWrapper>
-    </div>
+        <div className="w-[30rem]">
+          <div className="flex flex-col gap-8">
+            <div className="flex flex-row gap-2 items-center">
+
+              <div className='text-lg'>{"Emotional Summary"}</div>
+
+            </div>
+            <div className='flex flex-row gap-5'>
+              <div className="flex flex-col gap-5">
+                <EmotionRankChart percentage={["50%", "40%", "10%"]} course={"2102134"}/>
+                <EmotionRankChart percentage={["50%", "40%", "10%"]} course={"202324"}/>
+                <EmotionRankChart percentage={["50%", "40%", "10%"]} course={"230543"}/>
+
+              </div>
+            </div>
+          </div>
+        </div></CardWrapper>
+    </div >
   )
 }
