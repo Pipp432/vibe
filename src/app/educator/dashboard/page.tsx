@@ -1,5 +1,6 @@
 'use client'
 
+import GraphBox from "./GraphBox";
 import Chart from "chart.js/auto";
 import useModal from "@/hooks/useModal";
 import { CategoryScale } from "chart.js";
@@ -54,13 +55,14 @@ export default function DashboardPage() {
     ], options: options
   });
   return (
-    <div className="flex flex-col p-20 gap-10">
-
-
-      {isAnalysisModalOpen && <AnalysisProgressPopUp closeOverlayHandler={toggleAnalysisModal}/>}
-      {isEmotionModalOpen && <EmotionalSummaryPopUp closeOverlayHandler={toggleEmotionModal}/>}
-      <AnalysisProgress toggleModal={toggleAnalysisModal}/>
-      <EmotionSummary toggleModal={toggleEmotionModal}/>
-    </div >
+    <div className="flex gap-10 pt-32 pl-20 justify-center">
+      <div className="flex flex-col gap-10">
+        {isAnalysisModalOpen && <AnalysisProgressPopUp closeOverlayHandler={toggleAnalysisModal} />}
+        {isEmotionModalOpen && <EmotionalSummaryPopUp closeOverlayHandler={toggleEmotionModal} />}
+        <AnalysisProgress toggleModal={toggleAnalysisModal} />
+        <EmotionSummary toggleModal={toggleEmotionModal} />
+      </div>
+<GraphBox/>
+    </div>
   )
 }
