@@ -1,12 +1,14 @@
 'use client'
 
 import Chart from "chart.js/auto";
+import useModal from "@/hooks/useModal";
 import { CategoryScale } from "chart.js";
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { useState } from "react";
 import { Data } from "@/data/data";
 import AnalysisProgress from "./AnalysisProgress";
 import EmotionSummary from "./EmotionSummary";
+import AnalysisProgressPopUp from "@/components/dashboard/AnalysisProgressPopUp";
 const options = {
   tooltips: {
     enabled: false
@@ -27,6 +29,7 @@ const options = {
   }
 };
 export default function DashboardPage() {
+  const [isModalOpen, toggleModal] = useModal()
   Chart.register(CategoryScale);
   Chart.register(ChartDataLabels);
   const [chartData, setChartData] = useState({
@@ -51,7 +54,8 @@ export default function DashboardPage() {
     <div className="flex flex-col p-20 gap-10">
 
 
-      <AnalysisProgress />
+      {isModalOpen && <AnalysisProgressPopUp closeOverlayHandler={toggleModal}/>}
+      <AnalysisProgress toggleModal={toggleModal}/>
       <EmotionSummary/>
     </div >
   )
