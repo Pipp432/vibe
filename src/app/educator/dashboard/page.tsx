@@ -51,18 +51,21 @@ export default function DashboardPage() {
     ], options: options
   });
   return (
-    <div className="flex flex-col p-20 gap-52">
+    <div className="flex flex-col p-20 gap-10">
 
 
       <CardWrapper>
-        <div className="w-[30rem]">
+        <div className="flex flex-row gap-2 items-center">
+          <div className="text-lg">{"Analysis Progress"}</div>
+          <InformationButton />
+        </div>
+
+        <div className="w-[30rem] h-[20rem] overflow-y-scroll">
           <div className="flex flex-col gap-8">
-            <div className="flex flex-row gap-2 items-center">
-              <div className="text-lg">{"Analysis Progress"}</div>
-              <InformationButton />
-            </div>
             <div className="flex flex-row gap-5">
               <div className="flex flex-col gap-5">
+                <ProgressStatus courseName="Intro Sto Mod" status="processing" />
+                <ProgressStatus courseName="Intro Sto Mod" status="processing" />
                 <ProgressStatus courseName="Intro Sto Mod" status="processing" />
                 <ProgressStatus courseName="Intro Sto Mod" status="processing" />
                 <ProgressStatus courseName="Intro Sto Mod" status="processing" />
@@ -81,23 +84,32 @@ export default function DashboardPage() {
       </CardWrapper>
 
       <CardWrapper>
-        <div className="w-[30rem]">
+        <div className="flex flex-row gap-2 items-center mb-4">
+
+          <div className='text-lg'>{"Emotional Summary"}</div>
+
+          <InformationButton />
+        </div>
+        <div className="w-[30rem] h-[20rem] overflow-y-scroll">
           <div className="flex flex-col gap-8">
-            <div className="flex flex-row gap-2 items-center">
-
-              <div className='text-lg'>{"Emotional Summary"}</div>
-
-            </div>
             <div className='flex flex-row gap-5'>
               <div className="flex flex-col gap-5">
-                <EmotionRankChart percentage={["50%", "40%", "10%"]} course={"2102134"}/>
-                <EmotionRankChart percentage={["50%", "40%", "10%"]} course={"202324"}/>
-                <EmotionRankChart percentage={["50%", "40%", "10%"]} course={"230543"}/>
+                <EmotionRankChart percentage={["50%", "40%", "10%"]} course={"2102134"} />
+                <EmotionRankChart percentage={["50%", "40%", "10%"]} course={"2102134"} />
+                <EmotionRankChart percentage={["50%", "40%", "10%"]} course={"2102134"} />
+                <EmotionRankChart percentage={["50%", "40%", "10%"]} course={"2102134"} />
+                <EmotionRankChart percentage={["50%", "40%", "10%"]} course={"2102134"} />
+                <EmotionRankChart percentage={["40%", "30%", "30%"]} course={"202324"} />
+                <EmotionRankChart percentage={["40%", "30%", "30%"]} course={"202324"} />
+                <EmotionRankChart percentage={["40%", "30%", "30%"]} course={"202324"} />
+                <EmotionRankChart percentage={["50%", "40%", "10%"]} course={"230543"} />
 
               </div>
             </div>
           </div>
-        </div></CardWrapper>
+        </div>
+
+      </CardWrapper>
     </div >
   )
 }
