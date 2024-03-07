@@ -2,7 +2,7 @@ import React from 'react'
 import EmotionRankChart from "@/components/graph/EmotionRankChart"
 import CardWrapper from "@/components/general/CardWrapper"
 import InformationButton from '@/components/general/InformationButton'
-function EmotionSummary() {
+function EmotionSummary({toggleModal}:{toggleModal:()=>void}) {
   return (
   
       <CardWrapper>
@@ -10,7 +10,7 @@ function EmotionSummary() {
 
           <div className='text-lg'>{"Emotional Summary"}</div>
 
-          <InformationButton />
+          <InformationButton onClick={toggleModal}/>
         </div>
         <div className="w-[30rem] h-[20rem] overflow-y-scroll">
           <div className="flex flex-col gap-8">

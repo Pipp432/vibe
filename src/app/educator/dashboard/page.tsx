@@ -9,6 +9,8 @@ import { Data } from "@/data/data";
 import AnalysisProgress from "./AnalysisProgress";
 import EmotionSummary from "./EmotionSummary";
 import AnalysisProgressPopUp from "@/components/dashboard/AnalysisProgressPopUp";
+import EmotionalSummaryPopUp from "@/components/dashboard/EmotionalSummaryPopup";
+
 const options = {
   tooltips: {
     enabled: false
@@ -29,7 +31,8 @@ const options = {
   }
 };
 export default function DashboardPage() {
-  const [isModalOpen, toggleModal] = useModal()
+  const [isAnalysisModalOpen, toggleAnalysisModal] = useModal()
+  const [isEmotionModalOpen, toggleEmotionModal] = useModal()
   Chart.register(CategoryScale);
   Chart.register(ChartDataLabels);
   const [chartData, setChartData] = useState({
@@ -54,9 +57,10 @@ export default function DashboardPage() {
     <div className="flex flex-col p-20 gap-10">
 
 
-      {isModalOpen && <AnalysisProgressPopUp closeOverlayHandler={toggleModal}/>}
-      <AnalysisProgress toggleModal={toggleModal}/>
-      <EmotionSummary/>
+      {isAnalysisModalOpen && <AnalysisProgressPopUp closeOverlayHandler={toggleAnalysisModal}/>}
+      {isEmotionModalOpen && <EmotionalSummaryPopUp closeOverlayHandler={toggleEmotionModal}/>}
+      <AnalysisProgress toggleModal={toggleAnalysisModal}/>
+      <EmotionSummary toggleModal={toggleEmotionModal}/>
     </div >
   )
 }
