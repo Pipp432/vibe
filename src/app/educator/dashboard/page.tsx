@@ -11,7 +11,7 @@ export default function DashboardPage() {
   const [isAnalysisModalOpen, toggleAnalysisModal] = useModal()
   const [isEmotionModalOpen, toggleEmotionModal] = useModal()
   return (
-    <div className="flex gap-10 pt-32 pl-20 justify-center">
+    <div className="flex gap-10 pt-32 pl-14 justify-center">
       <div className="flex flex-col gap-10">
         {isAnalysisModalOpen && <AnalysisProgressPopUp closeOverlayHandler={toggleAnalysisModal} />}
         {isEmotionModalOpen && <EmotionalSummaryPopUp closeOverlayHandler={toggleEmotionModal} />}
