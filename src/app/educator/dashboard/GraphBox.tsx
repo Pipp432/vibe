@@ -1,8 +1,8 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import Chart from 'chart.js/auto'
 import BarChart from '@/components/graph/BarChart'
 import CardWrapper from "@/components/general/CardWrapper"
-import {Data} from '@/data/data'
+import { Data } from '@/data/data'
 import { CategoryScale } from "chart.js";
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 
@@ -25,16 +25,16 @@ const options = {
     }
   }
 };
-function GraphBox() {
-  
+function GraphBox({ graphTitle,toggleModal}: { graphTitle: string , toggleModal:()=>void}) {
+
   Chart.register(CategoryScale);
   Chart.register(ChartDataLabels);
   const [chartData, setChartData] = useState({
-    labels: Data.map((data:any) => data.year),
+    labels: Data.map((data: any) => data.year),
     datasets: [
       {
         label: "Users Gained ",
-        data: Data.map((data:any) => data.userGain),
+        data: Data.map((data: any) => data.userGain),
         backgroundColor: [
           "rgba(75,192,192,0.5)",
           "#50AF95",
@@ -48,11 +48,16 @@ function GraphBox() {
     ], options: options
   });
   return (
-  <CardWrapper>
-      <div className='w-[42vw] flex flex-col justify-between h-[100%]'>
-        <BarChart chartData={chartData}/>
+    <CardWrapper>
+      <div className='text-xl flex'>{graphTitle}</div>
+      <div className='w-[42vw] flex flex-col justify-between h-[95%]'>
+        <BarChart chartData={chartData} />
 
-      <div className='flex flex-row justify-end'><button className='w-48 h-20 bg-sky-500 text-white rounded-full'>Change Graph</button></div>
+        <div className='flex flex-row justify-end'>
+          <button className='w-48 h-16 bg-secondary text-lg  rounded-full' 
+            onClick={toggleModal}>Change Graph</button>
+
+        </div>
       </div>
     </CardWrapper>
   )

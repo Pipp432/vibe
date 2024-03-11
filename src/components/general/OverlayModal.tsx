@@ -1,7 +1,6 @@
 'use client'
 import React from 'react'
 import Modal from './Modal'
-import useModal from '@/hooks/useModal'
 
 function OverlayModal({ title, children , closeOverlayHandler}: { title: string, children: React.ReactNode, closeOverlayHandler:()=>void }) {
   return (
