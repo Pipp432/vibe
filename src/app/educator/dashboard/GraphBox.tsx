@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { Dispatch, ReactNode, SetStateAction, useEffect, useState } from 'react'
 import Chart from 'chart.js/auto'
+import PieChart from '@/components/graph/PieChart'
 import BarChart from '@/components/graph/BarChart'
 import CardWrapper from "@/components/general/CardWrapper"
 import { Data } from '@/data/data'
@@ -25,10 +26,14 @@ const options = {
     }
   }
 };
-function GraphBox({ graphTitle,toggleModal}: { graphTitle: string , toggleModal:()=>void}) {
+function GraphBox({ graphTitle, toggleModal, graph }:
+  {
+    graphTitle: string, toggleModal: () => void, graph: string,
+  }) {
 
   Chart.register(CategoryScale);
   Chart.register(ChartDataLabels);
+  const [chart, setChart] = useState<ReactNode>();
   const [chartData, setChartData] = useState({
     labels: Data.map((data: any) => data.year),
     datasets: [
@@ -47,14 +52,25 @@ function GraphBox({ graphTitle,toggleModal}: { graphTitle: string , toggleModal:
       }
     ], options: options
   });
+
+  const handleRenderChart = () => {
+    switch (graph) {
+      case "BAR_CHART": return <BarChart chartData={chartData} />;
+      case "PIE_CHART": return <PieChart chartData={chartData} />;
+      default: <PieChart chartData={chartData} />;
+    }
+  }
+  useEffect(() => {
+    
+    setChart(handleRenderChart())
+  }, [graph])
   return (
     <CardWrapper>
       <div className='text-xl flex'>{graphTitle}</div>
       <div className='w-[42vw] flex flex-col justify-between h-[95%]'>
-        <BarChart chartData={chartData} />
-
+        {chart}
         <div className='flex flex-row justify-end'>
-          <button className='w-48 h-16 bg-secondary text-lg  rounded-full' 
+          <button className='w-48 h-16 bg-secondary text-lg  rounded-full'
             onClick={toggleModal}>Change Graph</button>
 
         </div>
