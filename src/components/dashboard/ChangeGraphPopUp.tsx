@@ -6,7 +6,7 @@ function ChangeGraphPopUp({ closeOverlayHandler,changeGraphHandler }:
 
     <OverlayModal title={""} closeOverlayHandler={closeOverlayHandler}>
       <div className='w-[50rem] h-[30rem] flex gap-12'>
-        <div className='h-full w-48 bg-subTab rounded-tl-lg rounded-bl-lg flex flex-col gap-10'></div>
+        <div className='h-[31rem] -translate-y-4 w-48 bg-subTab rounded-tl-lg rounded-bl-lg flex flex-col gap-10'></div>
 
         <div className='grid grid-cols-2 gap-5 p-4'>
           <div className='rounded-lg bg-subTab h-52 w-52'>

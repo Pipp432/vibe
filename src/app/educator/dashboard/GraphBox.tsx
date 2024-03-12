@@ -66,7 +66,7 @@ function GraphBox({ graphTitle, toggleModal, graph }:
   return (
     <CardWrapper>
       <div className='text-xl flex'>{graphTitle}</div>
-      <div className='w-[40vw] flex flex-col justify-center h-[85%]'>
+      <div className='w-[42vw] flex flex-col justify-center h-[85%]'>
 
         {chart}
       </div>
