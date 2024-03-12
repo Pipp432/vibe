@@ -5,14 +5,15 @@ import {Radar} from "react-chartjs-2";
 function RadarChart({ chartData}:{chartData:any}) {
   return (
     <div>
-      <h2 style={{ textAlign: "center" }}>Pie Chart</h2>
       <Radar
         data={chartData}
+        height="600px"
+        width="600px"
         options={{
+          maintainAspectRatio: false,
           plugins: {
             title: {
               display: true,
-              text: "title"
             }
           }
         }}

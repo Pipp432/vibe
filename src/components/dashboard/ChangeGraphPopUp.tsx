@@ -18,7 +18,11 @@ function ChangeGraphPopUp({ closeOverlayHandler,changeGraphHandler }:
             <button className='text-center text-lg h-full w-full'
               onClick={()=>{changeGraphHandler("PIE_CHART");closeOverlayHandler()}}>Pie Chart</button>
           </div>
-          <div className='rounded-lg bg-subTab h-52 w-52'></div>
+          <div className='rounded-lg bg-subTab h-52 w-52'>
+
+            <button className='text-center text-lg h-full w-full'
+              onClick={()=>{changeGraphHandler("RADAR_CHART");closeOverlayHandler()}}>Radar Chart</button>
+          </div>
           <div className='rounded-lg bg-subTab h-52 w-52'></div>
         </div>
       </div>

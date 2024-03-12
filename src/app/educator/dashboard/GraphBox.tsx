@@ -6,6 +6,7 @@ import CardWrapper from "@/components/general/CardWrapper"
 import { Data } from '@/data/data'
 import { CategoryScale } from "chart.js";
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+import RadarChart from '@/components/graph/RadarChart'
 
 const options = {
   tooltips: {
@@ -57,6 +58,7 @@ function GraphBox({ graphTitle, toggleModal, graph }:
     switch (graph) {
       case "BAR_CHART": return <BarChart chartData={chartData} />;
       case "PIE_CHART": return <PieChart chartData={chartData} />;
+      case "RADAR_CHART": return <RadarChart chartData={chartData}/>;
       default: <PieChart chartData={chartData} />;
     }
   }
