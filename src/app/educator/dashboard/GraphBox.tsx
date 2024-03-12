@@ -61,20 +61,20 @@ function GraphBox({ graphTitle, toggleModal, graph }:
     }
   }
   useEffect(() => {
-    
     setChart(handleRenderChart())
   }, [graph])
   return (
     <CardWrapper>
       <div className='text-xl flex'>{graphTitle}</div>
-      <div className='w-[42vw] flex flex-col justify-between h-[95%]'>
+      <div className='w-[40vw] flex flex-col justify-center h-[85%]'>
+
         {chart}
+      </div>
         <div className='flex flex-row justify-end'>
           <button className='w-48 h-16 bg-secondary text-lg  rounded-full'
             onClick={toggleModal}>Change Graph</button>
 
         </div>
-      </div>
     </CardWrapper>
   )
 }

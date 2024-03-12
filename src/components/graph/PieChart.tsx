@@ -2,17 +2,20 @@
 import React from "react";
 import { Pie } from "react-chartjs-2";
 
-function PieChart({ chartData}:{chartData:any}) {
+function PieChart({ chartData }: { chartData: any }) {
   return (
     <div>
-      <h2 style={{ textAlign: "center" }}>Pie Chart</h2>
       <Pie
         data={chartData}
+
+        height="600px"
+        width="600px"
         options={{
+          maintainAspectRatio: false,
           plugins: {
+
             title: {
               display: true,
-              text: "title"
             }
           }
         }}
