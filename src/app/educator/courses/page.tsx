@@ -1,8 +1,10 @@
 import React from 'react'
 import Table from '@/components/courses/Table'
+import SearchBar from '@/components/courses/SearchBar'
 function CoursesPage() {
   return (
-    <div className='grid place-items-center h-full w-full ml-4'>
+    <div className='flex flex-col gap-10 ml-6 mt-40'>
+      <SearchBar/>
       <Table />
     </div>
   )

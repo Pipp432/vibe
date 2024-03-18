@@ -4,7 +4,7 @@ import TableRow from './TableRow'
 function CoursesTable() {
   return (
 
-    <table className='w-[80vw] h-[15vh] shadow-black shadow-md table-fixed'>
+    <table className='w-[80vw] h-[30vh] shadow-black shadow-md table-fixed'>
       <tbody>
         <tr className='bg-primary text-white text-lg'>
           <th className='w-40'>Course ID</th>
