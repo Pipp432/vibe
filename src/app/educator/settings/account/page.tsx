@@ -3,8 +3,8 @@ import React from 'react'
 
 function AccountSettingsPage() {
   return (
-    <>
-      <div className='flex mt-32 mx-6 '>
+    <div className='flex flex-col gap-10 mx-4'>
+      <div className='flex mt-32 '>
         <div className='flex flex-col'>
           <div className='text-3xl'>Profile</div>
           <div className='flex flex-col'>
@@ -24,10 +24,19 @@ function AccountSettingsPage() {
             <AccountItem title='Phone Number' info='+66892245258' />
 
             <AccountItem title='Faculty' info='Engineering' />
+         <button className='h-10 w-52 bg-secondary rounded-full text-lg'>Edit Profile</button>
           </div>
         </div>
       </div>
-    </>
+      <div className='flex flex-col gap-4'>
+        <div className='text-3xl text-red-500'>DANGER!!!</div>
+        <div className='flex flex-row gap-4 text-2xl '>
+          Would you like to delete your account?
+          Once done it cannot be undone
+          <button className='bg-error w-52 h-10 text-lg text-white rounded-xl hover:bg-error-hover'>{"DELETE ACCOUNT"}</button>
+        </div>
+      </div>
+    </div>
   )
 }
 
