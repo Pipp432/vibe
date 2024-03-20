@@ -1,5 +1,11 @@
 // utils/Data.js
-export const Data = [
+
+type EmotionChartData = {
+  id:number,
+  emotion:string
+  evaluations:number
+}
+export const Data:Array<EmotionChartData> = [
   {
     id: 1,
     emotion: "angry",
