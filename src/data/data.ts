@@ -9,27 +9,27 @@ export const Data:Array<EmotionChartData> = [
   {
     id: 1,
     emotion: "angry",
-    evaluations: 800,
+    evaluations: 500,
     
   },
   {
     id: 2,
     emotion: "joy",
-    evaluations: 800,
+    evaluations: 200,
   },
   {
     id: 3,
     emotion: "confusion",
-    evaluations: 800,
+    evaluations: 600,
   },
   {
     id: 4,
     emotion: "approval",
-    evaluations: 800,
+    evaluations: 400,
   },
   {
     id: 5,
     emotion: "disapproval",
-    evaluations: 800,
+    evaluations: 1000,
   }
 ];
