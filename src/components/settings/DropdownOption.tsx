@@ -5,7 +5,7 @@ function DropdownOption({text}:{text:string}) {
   const [isOpen,setIsOpen] = useState(false);
   return (
     <>
-    <div  onMouseDown={()=>{setIsOpen(!isOpen)}} className='border-4 pl-2 border-subTab flex flex-row justify-between items-center w-[40vw] rounded-2xl'>
+    <div  onMouseDown={()=>{setIsOpen(!isOpen)}} className='border-4 pl-2 border-black flex flex-row justify-between items-center w-[40vw] rounded-2xl'>
       <div className='text-2xl'>{text}</div> 
       <div><RiArrowDropDownFill size={"50"}/></div>
     </div>
