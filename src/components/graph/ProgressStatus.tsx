@@ -21,7 +21,8 @@ function ProgressStatus({ status,courseName }: { status: string, courseName:stri
     <div className='flex flex-row gap-6 text-md items-center '>
       {courseName}
       <div className='flex flex-row gap-2'>
-        {colors.map((color,index) => { return <ProgressStatusCircle color={color} key={index} /> })}
+        {colors.map((color,index) => { return <ProgressStatusCircle color={color} key={index}  /> })}
+        
       </div>
 
     </div>
