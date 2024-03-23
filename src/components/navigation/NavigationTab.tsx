@@ -14,9 +14,11 @@ function NavigationTab() {
 
   const changeIndicatorPosition = (changePosition: number) => {
 
-    if(currentSelection>changePosition) setPosition(28-16.5*(changePosition))
-    if(currentSelection<changePosition)setPosition(28+16.5*(changePosition))
-
+    if(currentSelection>changePosition) setPosition(position - 16.5*(currentSelection-changePosition))
+    if(currentSelection<changePosition)setPosition(position +16.5*(changePosition-currentSelection))
+    console.log(currentSelection,changePosition);
+    console.log(position)
+    
     setCurrentSelection(changePosition)
     
   }
