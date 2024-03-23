@@ -26,9 +26,12 @@ function NavigationTab() {
     "dashboard": 0,
     "analysis": 1,
     "courses": 2,
-    "settings": 3
+    "settings": 3,
+    "account":3,
+    "information":3
   }
   useEffect(() => {
+    console.log(pagename)
     changeIndicatorPosition(pathDict[pagename])
    })
   return (
