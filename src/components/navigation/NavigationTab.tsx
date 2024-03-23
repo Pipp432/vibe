@@ -28,9 +28,9 @@ function NavigationTab() {
     "courses": 2,
     "settings": 3
   }
-  //useEffect(() => {
-  //  changeIndicatorPosition(pathDict[pagename])
- // })
+  useEffect(() => {
+    changeIndicatorPosition(pathDict[pagename])
+   })
   return (
     <>
     <div className='w-72 h-full bg-primary relative'>
