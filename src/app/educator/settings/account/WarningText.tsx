@@ -7,7 +7,7 @@ function WarningText({onClick}:{onClick:()=>void}) {
         <div className='flex flex-row gap-4 text-2xl '>
           Would you like to delete your account?
           Once done it cannot be undone
-          <button className='bg-error w-52 h-10 text-lg text-white rounded-xl hover:bg-error-hover' onClick={onClick}>{"DELETE ACCOUNT"}</button>
+          <button className='bg-error w-52 h-10 text-lg text-white rounded-full hover:bg-error-hover' onClick={onClick}>{"DELETE ACCOUNT"}</button>
         </div>
       </div>
   )
