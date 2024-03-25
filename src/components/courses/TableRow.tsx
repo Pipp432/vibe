@@ -9,7 +9,7 @@ type courseInformationType={
   dataState:number
 }
 
-function TableRow({courseInformation}:{courseInformation:courseInformationType}) {
+function TableRow({courseInformation,toggleModal}:{courseInformation:courseInformationType,toggleModal?:()=>void}) {
   const getDataStateComponent = ()=>{
     switch (courseInformation.dataState) {
       case 0:
@@ -17,7 +17,7 @@ function TableRow({courseInformation}:{courseInformation:courseInformationType})
       case 1:
       return <UploadDataButtonSet/>
       case 2:
-      return <ViewDataButtonSet/>
+      return <ViewDataButtonSet toggleModal = {toggleModal!}/>
       default:
         break;
     }

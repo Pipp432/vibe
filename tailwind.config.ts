@@ -22,7 +22,7 @@ const config: Config = {
       },
       animation:{
         'spin-slow':'spin 2s linear infinite'
-        ,'fade-in':'fade-in 1s linear'
+        ,'fade-in':'fade-in 0.5s linear'
       },
 			colors: {
 				background: "#F4F4FC",
