@@ -1,7 +1,7 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
-const DatePicker = () => {
+const DatePicker = ({onSubmit,handleSelectDate }:{onSubmit:()=>void,handleSelectDate:(date:string)=>void}) => {
   const [selectedYear, setSelectedYear] = useState("")
   const [selectedSemester, setSelectedSemester] = useState("")
   const years = ["2020", "2021", "2022", "2023", "2024"]
@@ -22,8 +22,15 @@ const DatePicker = () => {
       setSelectedSemester(key)
     }
   }
+  useEffect(()=>{
+if(selectedYear && selectedSemester){
+
+    handleSelectDate(selectedYear+'/'+selectedSemester)  
+    onSubmit();
+    }
+  },[selectedYear,selectedSemester])
   return (
-    <div className='flex gap-2  rounded-lg p-2 shadow-black shadow-md mt-24'>
+    <div className='flex gap-2  rounded-lg p-2 shadow-black shadow-md'>
       <div className='grid grid-cols-2 gap-x-2 gap-y-2'>
         {years.map((year) => {
           return <div style={{ borderColor: `${selectedYear === year ? 'black' : ''}`, color: `${selectedYear === year ? 'black' : ''}` }} key={year} className='flex flex-row justify-center 
@@ -40,7 +47,8 @@ const DatePicker = () => {
           return <div onMouseDown={() => { handleSelectSemester(semester) }} style={{ borderColor: `${selectedSemester=== semester? 'black' : ''}`, 
             color: `${selectedSemester === semester? 'black' : ''}` }} 
             key={semester} className='flex flex-row border-gray-400
-              text-gray-400 justify-center hover:border-black hover:text-black items-center border-2 w-20 h-12 rounded-lg cursor-pointer '>
+              text-gray-400 justify-center hover:border-black hover:text-black items-center 
+            border-2 w-20 h-12 rounded-lg cursor-pointer'>
             {semester}
           </div>
         })}

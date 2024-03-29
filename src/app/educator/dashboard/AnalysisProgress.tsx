@@ -1,6 +1,5 @@
 'use client'
 import React from 'react'
-import useModal from '@/hooks/useModal'
 import CardWrapper from "@/components/general/CardWrapper"
 import InformationButton from '@/components/general/InformationButton'
 import ProgressStatus from "@/components/graph/ProgressStatus"
@@ -10,8 +9,7 @@ function AnalysisProgress({toggleModal}:{toggleModal:()=>void}) {
       <CardWrapper>
         <div className="flex flex-row gap-2 items-center mb-2">
           <div className="text-lg">{"Analysis Progress"}</div>
-          <InformationButton onClick={toggleModal
-          } />
+          <InformationButton onClick={toggleModal } />
 
 
         </div>

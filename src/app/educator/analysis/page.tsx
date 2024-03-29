@@ -1,11 +1,13 @@
-import React from 'react'
-import DatePicker from "@/components/analysis/DatePicker"
-import CoursePicker from "@/components/analysis/CoursePicker"
-export default function AnalysisPage(){
+'use client'
+import React, { useState } from 'react'
+import CourseSelector from './CourseSelector'
+export default function AnalysisPage() {
+  const [isFormComplete,setIsFormComplete] = useState(false)
   return (
     <>
-      <CoursePicker/>
-      <DatePicker/>
+      <CourseSelector  onFormComplete={(e:boolean)=>{setIsFormComplete(e)}}/>
+
+      {isFormComplete && <div>Hello</div>}
     </>
   )
 }
