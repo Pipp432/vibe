@@ -5,10 +5,11 @@ import { CiLogout } from "react-icons/ci";
 import { useRouter } from 'next/navigation';
 import { getAuth, signOut } from 'firebase/auth';
 function ProfileMenu() {
+
+    const router = useRouter()
   try {
 
 
-    const router = useRouter()
     const auth = getAuth()
 
     const handleSignOut = async () => {
@@ -37,7 +38,6 @@ function ProfileMenu() {
       </div>
     )
   } catch {
-    const router = useRouter();
     return (
 
       <div className='w-72 h-28 rounded-xl bg-popup-background 

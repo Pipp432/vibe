@@ -20,8 +20,8 @@ function CoursePicker({onSubmit,handleSelectCourse}:{onSubmit:()=>void,handleSel
           className='rounded-lg p-2' onChange={e=>{setFilter(e.target.value)}} />
       </div>
 
-        {filteredCourses.map((course) => {
-          return <div onMouseDown={()=>{onSubmit();handleSelectCourse(course)}}
+        {filteredCourses.map((course,index) => {
+          return <div key={index} onMouseDown={()=>{onSubmit();handleSelectCourse(course)}}
           className='flex flex-row justify-center 
             items-center  border-2  h-12 border-gray-400 rounded-lg text-gray-400 
             hover:border-black hover:text-black cursor-pointer'>{course}</div>

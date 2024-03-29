@@ -26,7 +26,7 @@ function InformationSettingsPage() {
       <div className='flex flex-col mt-5 gap-4' >
         <div className='text-2xl'>Theme</div>
 
-        <div className='text-md text-slate-500'>Manage how the web's represented</div>
+        <div className='text-md text-slate-500'>{"Manage how the web's represented"}</div>
         <div className='flex'>
         </div>
       </div>
