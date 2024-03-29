@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 
 
 const firebaseConfig = {
-	apiKey: "",
+	apiKey: process.env.FIREBASE_API_KEY,
 	authDomain: "vibe-fbdd9.firebaseapp.com",
 	projectId: "vibe-fbdd9",
 	storageBucket: "vibe-fbdd9.appspot.com",
