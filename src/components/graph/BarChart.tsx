@@ -7,7 +7,7 @@ function BarChart({ chartData }: { chartData: any }) {
     <div>
       <Bar
         data={chartData}
-        height={"200%"} 
+        height={"125%"} 
         plugins={[
           {
             id: "increase-legend-spacing",

@@ -17,7 +17,7 @@ function CourseSelector({ onFormComplete }: { onFormComplete: (e: boolean) => vo
   }, [selectedDate, selectedCourse])
   return (
     <>
-      <div className='flex gap-10 ml-10 mt-44'>
+      <div className='flex gap-10 ml-10 mt-32'>
         <div className='flex flex-col gap-2 justify-start'>
           <button onClick={toggleSelectCourseHandler} className='flex justify-center bg-secondary text-xl rounded-lg w-[12vw] p-2'>{selectedCourse ? selectedCourse : 'Select Course'}</button>
           {isSelectCourseOpen &&
