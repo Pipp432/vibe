@@ -12,10 +12,10 @@ function EmotionSummary({ toggleModal }: { toggleModal: () => void }) {
 
         <InformationButton onClick={toggleModal} />
       </div>
-      <div className="w-[30rem] h-[18rem] overflow-y-scroll">
+      <div className="w-[30rem] h-[18rem]  overflow-y-scroll">
         <div className="flex flex-col gap-8">
           <div className='flex flex-row gap-5'>
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-5 w-[25vw]">
               <EmotionRankChart percentage={["50%", "40%", "10%"]} course={"2102134"} />
               <EmotionRankChart percentage={["50%", "40%", "10%"]} course={"2102134"} />
               <EmotionRankChart percentage={["50%", "40%", "10%"]} course={"2102134"} />
