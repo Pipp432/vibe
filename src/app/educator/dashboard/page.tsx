@@ -8,12 +8,14 @@ import AnalysisProgressPopUp from "@/components/dashboard/AnalysisProgressPopUp"
 import EmotionalSummaryPopUp from "@/components/dashboard/EmotionalSummaryPopup";
 import ChangeGraphPopUp from '@/components/dashboard/ChangeGraphPopUp'
 import { useState } from "react";
+require('dotenv').config()
 export default function DashboardPage() {
   const [isAnalysisModalOpen, toggleAnalysisModal] = useModal()
   const [isEmotionModalOpen, toggleEmotionModal] = useModal()
   const [isChangeGraphModalOpen, toggleChangeGraphModal] = useModal()
   const [graph,setGraph] = useState("PIE_CHART");
-
+  console.log(process.env.FIREBASE_API_KEY)
+  
   return (
     <div className="flex gap-10 pt-32 pl-14 justify-center">
       <div className="flex flex-col gap-10">
