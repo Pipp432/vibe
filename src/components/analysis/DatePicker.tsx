@@ -30,7 +30,7 @@ if(selectedYear && selectedSemester){
     }
   },[selectedYear,selectedSemester])
   return (
-    <div className='flex gap-2  rounded-lg p-2 shadow-black shadow-md'>
+    <div className='flex gap-2 z-100 bg-white rounded-lg p-2 shadow-black shadow-md'>
       <div className='grid grid-cols-2 gap-x-2 gap-y-2'>
         {years.map((year) => {
           return <div style={{ borderColor: `${selectedYear === year ? 'black' : ''}`, color: `${selectedYear === year ? 'black' : ''}` }} key={year} className='flex flex-row justify-center 
