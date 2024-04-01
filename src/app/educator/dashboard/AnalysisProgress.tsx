@@ -10,8 +10,6 @@ function AnalysisProgress({toggleModal}:{toggleModal:()=>void}) {
         <div className="flex flex-row gap-2 items-center mb-2">
           <div className="text-lg">{"Analysis Progress"}</div>
           <InformationButton onClick={toggleModal } />
-
-
         </div>
 
         <div className="w-[30rem] h-[20rem] overflow-y-scroll">
