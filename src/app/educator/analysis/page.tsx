@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react'
-import CourseSelector from './CourseSelector'
 import AnalysisInformation from './AnalysisInformation'
+import CourseSelector from './CourseSelector'
 export default function AnalysisPage() {
   const [isFormComplete, setIsFormComplete] = useState(false)
   return (

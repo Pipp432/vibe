@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Chart from 'chart.js/auto'
 import BarChart from '@/components/graph/BarChart'
 import CardWrapper from "@/components/general/CardWrapper"
@@ -32,11 +32,15 @@ function AnalysisGraphBox({ graphTitle }: { graphTitle: string }) {
         label: "Number of evaluations ",
         data: analysisData.map((data: any) => data.evaluations),
         backgroundColor: [
-          "rgba(75,192,192,0.5)",
-          "#50AF95",
-          "#FF0000",
-          "#f3ba2f",
-          "#2a71d0"
+          "#9CBEFF",
+          "#9CBEFF",
+          "#9CBEFF",
+          "#9CBEFF",
+          "#D9D9D9",
+          "#D23333",
+          "#D23333",
+          "#D23333",
+          "#D23333",
         ],
         borderColor: "black",
         borderWidth: 2

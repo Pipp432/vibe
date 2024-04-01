@@ -30,5 +30,27 @@ export const analysisData:Array<EmotionChartData>=[
     id: 5,
     emotion: "disapproval",
     evaluations: 1000,
-  }
+  },
+  {
+    id: 6,
+    emotion: "😁",
+    evaluations: 500,
+    
+  },
+  {
+    id: 7,
+    emotion: "joy",
+    evaluations: 200,
+  },
+  {
+    id: 8,
+    emotion: "confusion",
+    evaluations: 600,
+  },
+  {
+    id: 9,
+    emotion: "approval",
+    evaluations: 400,
+  },
+  
 ]

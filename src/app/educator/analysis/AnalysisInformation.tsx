@@ -16,7 +16,7 @@ function AnalysisInformation({ courseName }: { courseName: string }) {
             <div className='text-5xl'>Overall Score: 70</div>
             <InformationButton onClick={() => { }} />
           </div>
-          <button className='rounded-lg bg-subTab p-2 text-2xl'>Print Report</button>
+          <button className='rounded-lg bg-subTab p-2 text-items-center2xl'>Print Report</button>
         </div>
       </div>
     </>)

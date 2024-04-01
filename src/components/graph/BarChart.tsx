@@ -30,6 +30,9 @@ function BarChart({ chartData }: { chartData: any }) {
             y: { grid: { display: false } }
           },
           plugins: {
+            datalabels:{
+            color:"#ffffff"
+            },
             title: {
               display: true,
             }
