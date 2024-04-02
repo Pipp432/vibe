@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import CoursePicker from '@/components/analysis/CoursePicker'
 import DatePicker from "@/components/analysis/DatePicker"
-function CourseSelector({ onFormComplete }: { onFormComplete: (e: boolean) => void }) {
+function CourseSelector({ onFormComplete }: { onFormComplete: (e: Array<string>) => void }) {
 
   const [isSelectCourseOpen, setIsSelectCourseOpen] = useState(false);
   const [isSelectDateOpen, setIsSelectDateOpen] = useState(false);
@@ -11,8 +11,8 @@ function CourseSelector({ onFormComplete }: { onFormComplete: (e: boolean) => vo
   const toggleSelectDateHandler = () => { setIsSelectDateOpen(!isSelectDateOpen) }
 
   useEffect(() => {
-    if (selectedDate && selectedCourse) onFormComplete(true);
-    else onFormComplete(false)
+    if (selectedDate && selectedCourse) onFormComplete([selectedDate,selectedCourse]);
+    else onFormComplete([])
 
   }, [selectedDate, selectedCourse])
   return (

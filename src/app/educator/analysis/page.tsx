@@ -1,21 +1,26 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import AnalysisInformation from './AnalysisInformation'
 import CourseSelector from './CourseSelector'
+import useModal from '@/hooks/useModal'
+import OverallScorePopup from '@/components/analysis/OverallScorePopup'
 export default function AnalysisPage() {
-  const [isFormComplete, setIsFormComplete] = useState(false)
+  const [isModalOpen,toggleModal] = useModal()
+  const [form, setForm] = useState<Array<string>>([])
+ useEffect(()=>{},[form]) 
   return (
     <>
-      <CourseSelector onFormComplete={(e: boolean) => { setIsFormComplete(e) }} />
+      <CourseSelector onFormComplete={(e: Array<string>) => { setForm(e) }} />
 
-      {isFormComplete &&
+      {form.length===2 &&
         <div className='flex flex-col gap-2'>
           <div className='ml-10 mt-12'>
-            <AnalysisInformation courseName='data structure and algorithms' />
+            <AnalysisInformation courseName={form[1]} openModal={toggleModal}/>
           </div>
 
         </div>
       }
+      {isModalOpen &&<OverallScorePopup closeOverlayHandler={toggleModal}/> }
     </>
   )
 }
