@@ -7,49 +7,49 @@ type EmotionChartData = {
 export const analysisData:Array<EmotionChartData>=[
   {
     id: 1,
-    emotion: "😁",
+    emotion: "Joy",
     evaluations: 500,
     
   },
   {
     id: 2,
-    emotion: "joy",
+    emotion: "Approval",
     evaluations: 200,
   },
   {
     id: 3,
-    emotion: "confusion",
+    emotion: "Graditude",
     evaluations: 600,
   },
   {
     id: 4,
-    emotion: "approval",
+    emotion: "Admiration",
     evaluations: 400,
   },
   {
     id: 5,
-    emotion: "disapproval",
+    emotion: "Neutral",
     evaluations: 1000,
   },
   {
     id: 6,
-    emotion: "😁",
+    emotion: "Disappointed",
     evaluations: 500,
     
   },
   {
     id: 7,
-    emotion: "joy",
+    emotion: "Confusion",
     evaluations: 200,
   },
   {
     id: 8,
-    emotion: "confusion",
+    emotion: "Anger",
     evaluations: 600,
   },
   {
     id: 9,
-    emotion: "approval",
+    emotion: "Disapproval",
     evaluations: 400,
   },
   

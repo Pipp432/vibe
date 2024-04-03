@@ -24,10 +24,10 @@ function BarChart({ chartData }: { chartData: any }) {
           }
         ]}
         options={{
-          
+            
           scales: {
-            x: { grid: { display: false } },
-            y: { grid: { display: false } }
+            x: { grid: { display: false },ticks:{color:"black"} },
+            y: { grid: { display: false },ticks:{color:"black"} }
           },
           plugins: {
             datalabels:{
