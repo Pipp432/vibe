@@ -14,7 +14,7 @@ function CoursePicker({onSubmit,handleSelectCourse}:{onSubmit:()=>void,handleSel
     }
   }, [filter])
   return (
-    <div className='flex flex-col w-fit bg-white  rounded-lg shadow-black shadow-md'>
+    <>
       <div className='flex w-full '>
         <input placeholder='find your course' type='text'
           className='rounded-lg p-2' onChange={e=>{setFilter(e.target.value)}} />
@@ -27,7 +27,7 @@ function CoursePicker({onSubmit,handleSelectCourse}:{onSubmit:()=>void,handleSel
             hover:border-black hover:text-black cursor-pointer'>{course}</div>
         })}
 
-    </div>
+    </>
   )
 }
 

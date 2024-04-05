@@ -11,7 +11,7 @@ function CourseSelector({ onFormComplete }: { onFormComplete: (e: Array<string>)
   const toggleSelectDateHandler = () => { setIsSelectDateOpen(!isSelectDateOpen) }
 
   useEffect(() => {
-    if (selectedDate && selectedCourse) onFormComplete([selectedDate,selectedCourse]);
+    if (selectedDate && selectedCourse) onFormComplete([selectedDate, selectedCourse]);
     else onFormComplete([])
 
   }, [selectedDate, selectedCourse])
@@ -22,7 +22,9 @@ function CourseSelector({ onFormComplete }: { onFormComplete: (e: Array<string>)
           <button onClick={toggleSelectCourseHandler} className='flex justify-center bg-secondary text-xl rounded-lg w-[12vw] p-2'>{selectedCourse ? selectedCourse : 'Select Course'}</button>
           {isSelectCourseOpen &&
             <div className='absolute translate-y-12'>
-              <CoursePicker onSubmit={toggleSelectCourseHandler} handleSelectCourse={setSelectedCourse} />
+              <div className='rounded-lg shadow-md bg-white shadow-black'>
+                <CoursePicker onSubmit={toggleSelectCourseHandler} handleSelectCourse={setSelectedCourse} />
+              </div>
             </div>
           }
         </div>
@@ -31,7 +33,10 @@ function CourseSelector({ onFormComplete }: { onFormComplete: (e: Array<string>)
 
           {isSelectDateOpen &&
             <div className='absolute translate-y-12'>
-              <DatePicker onSubmit={toggleSelectDateHandler} handleSelectDate={setSelectedDate} />
+              <div className='p-2 rounded-lg shadow-md bg-white shadow-black'>
+                <DatePicker onSubmit={toggleSelectDateHandler} handleSelectDate={setSelectedDate} />
+              </div>
+
             </div>}
 
         </div>

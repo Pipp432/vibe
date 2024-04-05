@@ -1,7 +1,7 @@
 
 import React from 'react'
 import TableRow from './TableRow'
-function Table({toggleModal}:{toggleModal:()=>void}) {
+function Table({ toggleModal }: { toggleModal: () => void }) {
   return (
 
     <table className='w-[80vw] h-[30vh] shadow-black shadow-md table-fixed'>
@@ -14,26 +14,29 @@ function Table({toggleModal}:{toggleModal:()=>void}) {
           <th className='w-[40%]'>Data</th>
         </tr>
         <TableRow courseInformation={{
-          courseName:'MLDL',
-          courseID:'123456',
-          section:1,
-          semester:'2023/1',
-          dataState:1,
-        
-
-
-        }} 
-        toggleModal={toggleModal}/>
-        <TableRow courseInformation={{
-          courseName:'MLDL',
-          courseID:'123456',
-          section:1,
-          semester:'2023/1',
-          dataState:2,
-          
+          name: 'MLDL',
+          courseID: '123456',
+          section: 1,
+          semester: '1',
+          year:"2020",
+          major:"ICE",
+          faculty:'Enigneering',
+          isUpload: 0
 
         }}
-        toggleModal={toggleModal}/>
+          toggleModal={toggleModal} />
+        <TableRow courseInformation={{
+          name: 'MLDL',
+          courseID: '123456',
+          section: 1,
+          semester: '1',
+          year:"2020",
+          major:"ICE",
+          faculty:'Enigneering',
+          isUpload: 1
+
+        }}
+          toggleModal={toggleModal} />
       </tbody>
     </table>
   )

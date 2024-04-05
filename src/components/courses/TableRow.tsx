@@ -1,48 +1,39 @@
 import React from 'react'
 import UploadDataButtonSet from './UploadDataButtonSet'
 import ViewDataButtonSet from './ViewDataButtonSet'
-type courseInformationType={
-  courseID:string,
-  courseName:string,
-  semester:string,
-  section:number,
-  dataState:number
-}
-
-function TableRow({courseInformation,toggleModal}:{courseInformation:courseInformationType,toggleModal?:()=>void}) {
-  const getDataStateComponent = ()=>{
-    switch (courseInformation.dataState) {
+import { CourseType } from '../../../types'
+function TableRow({ courseInformation, toggleModal }: { courseInformation: CourseType, toggleModal?: () => void }) {
+  const getDataStateComponent = () => {
+    switch (courseInformation.isUpload) {
       case 0:
-        return "N/A"
+        return <UploadDataButtonSet />
       case 1:
-      return <UploadDataButtonSet/>
-      case 2:
-      return <ViewDataButtonSet toggleModal = {toggleModal!}/>
+        return <ViewDataButtonSet toggleModal={toggleModal!} />
       default:
         break;
     }
   }
   return (
 
-        <tr className='text-center'>
-          <td>
-          {courseInformation.courseID}
-          </td>
-          <td>
-          {courseInformation.courseName}
-          </td>
+    <tr className='text-center'>
+      <td>
+        {courseInformation.courseID}
+      </td>
+      <td>
+        {courseInformation.name}
+      </td>
 
-          <td>
-          {courseInformation.semester}
-          </td>
-          <td>
-            {courseInformation.section}
-          </td>
-          <td className='px-2'>{
+      <td>
+        {`${courseInformation.year}/${courseInformation.semester}`}
+      </td>
+      <td>
+        {courseInformation.section}
+      </td>
+      <td className='px-2'>{
         getDataStateComponent()
       }
-         </td>
-        </tr>
+      </td>
+    </tr>
   )
 }
 

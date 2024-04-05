@@ -1,18 +1,51 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
+import CardWrapper from '@/components/general/CardWrapper'
 import { IoSearch } from "react-icons/io5";
 import { BiSolidDownload } from "react-icons/bi";
+import DatePicker from '../analysis/DatePicker';
+import { CourseSearchFormDataType } from '../../../types';
 function SearchBar() {
+  const [isSearchBarFocus, setIsSearchBarFocus] = useState(false)
+  const [formData,setFormData] = useState({} as CourseSearchFormDataType );
+  const toggleOpenFilter = () => {
+    setIsSearchBarFocus(!isSearchBarFocus)
+  }
+
+  const handleChangeSearch = (e:React.FormEvent<HTMLInputElement>)=>{
+    const value = e.currentTarget.value
+    if(value.match(/\d+/g)) setFormData({...formData,courseID:value})
+    else setFormData({...formData,name:value})
+  }
+  const handleSelectYearSemesterSection =(semester:string, section:number,year:string)=>{
+    setFormData({...formData,section,semester,year})
+
+  }
   return (
     <div className='flex flex-row gap-6 w-[full]'>
-      <input type='text' className='text-2xl border-8 border-primary rounded-lg w-[70%] p-2 h-16' placeholder='Search by ID, Name, Semester, Section '></input>
-      
-      <button className='w-16 h-16 bg-secondary rounded-lg flex justify-center items-center'>
-        <IoSearch size={'50'}/>
+      <div className='flex flex-col gap-2 w-[70%]'>
+        <input type='text' onChange={(e:React.FormEvent<HTMLInputElement>)=>{handleChangeSearch(e)}} className='text-2xl border-8 border-primary rounded-lg  p-2 h-16' placeholder='Search by ID and Name'></input>
+        <div className='flex justify-start'>
+          <button  onClick={toggleOpenFilter}>Filters</button>
+        </div>
+        {isSearchBarFocus && <div className=''>
+          <CardWrapper>
+            <div className='flex gap-10'>
+              <div className='flex flex-col gap-2'>
+                {"Semester"}
+                <DatePicker onSubmit={handleSelectYearSemesterSection} pageName='courses'/>
+              </div>
+            </div>
+          </CardWrapper>
+        </div>}
+      </div>
+      <button className='w-16 h-16 bg-secondary rounded-lg flex justify-center items-center'
+      onClick={()=>{console.log(formData)}}>
+        <IoSearch size={'50'} />
       </button>
       <button className='w-52 px-2 h-16 bg-subTab rounded-lg flex gap-2 text-lg justify-center items-center'>
         {'CSV Format'}
-
-        <BiSolidDownload size={'50'}/>
+        <BiSolidDownload size={'50'} />
       </button>
 
     </div>

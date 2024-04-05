@@ -54,3 +54,10 @@ export type ContextEmotionObjectType = {
 export type ContextType = {
   "context":ContextEmotionObjectType; 
 }
+export type CourseSearchFormDataType = {
+  year:string,
+  semester:string,
+  section:number,
+  name?:string,
+  courseID?:string,
+}
