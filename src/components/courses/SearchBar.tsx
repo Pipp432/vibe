@@ -10,12 +10,13 @@ function SearchBar() {
   const [formData,setFormData] = useState({} as CourseSearchFormDataType );
   const toggleOpenFilter = () => {
     setIsSearchBarFocus(!isSearchBarFocus)
+    setFormData({section:-1,semester:"",year:""})
   }
 
   const handleChangeSearch = (e:React.FormEvent<HTMLInputElement>)=>{
     const value = e.currentTarget.value
-    if(value.match(/\d+/g)) setFormData({...formData,courseID:value})
-    else setFormData({...formData,name:value})
+    if(value.match(/\d+/g)) setFormData({...formData,courseID:value,name:''})
+    else setFormData({...formData,name:value, courseID:''})
   }
   const handleSelectYearSemesterSection =(semester:string, section:number,year:string)=>{
     setFormData({...formData,section,semester,year})
