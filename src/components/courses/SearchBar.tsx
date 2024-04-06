@@ -6,10 +6,10 @@ import { BiSolidDownload } from "react-icons/bi";
 import DatePicker from '../analysis/DatePicker';
 import { CourseSearchFormDataType } from '../../../types';
 function SearchBar() {
-  const [isSearchBarFocus, setIsSearchBarFocus] = useState(false)
+  const [isFilterOpen, setIsFilterOpen] = useState(false)
   const [formData,setFormData] = useState({} as CourseSearchFormDataType );
   const toggleOpenFilter = () => {
-    setIsSearchBarFocus(!isSearchBarFocus)
+    setIsFilterOpen(!isFilterOpen)
     setFormData({section:-1,semester:"",year:""})
   }
 
@@ -27,9 +27,9 @@ function SearchBar() {
       <div className='flex flex-col gap-2 w-[70%]'>
         <input type='text' onChange={(e:React.FormEvent<HTMLInputElement>)=>{handleChangeSearch(e)}} className='text-2xl border-8 border-primary rounded-lg  p-2 h-16' placeholder='Search by ID and Name'></input>
         <div className='flex justify-start'>
-          <button  onClick={toggleOpenFilter}>Filters</button>
+          <button style={{color:`${isFilterOpen?"red":""}`}} onClick={toggleOpenFilter}>{isFilterOpen?"Close & Clear":"Filter"}</button>
         </div>
-        {isSearchBarFocus && <div className=''>
+        {isFilterOpen&& <div className=''>
           <CardWrapper>
             <div className='flex gap-10'>
               <div className='flex flex-col gap-2'>
