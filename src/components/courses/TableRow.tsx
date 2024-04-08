@@ -3,16 +3,6 @@ import UploadDataButtonSet from './UploadDataButtonSet'
 import ViewDataButtonSet from './ViewDataButtonSet'
 import { CourseType } from '../../../types'
 function TableRow({ courseInformation, toggleModal }: { courseInformation: CourseType, toggleModal?: () => void }) {
-  const getDataStateComponent = () => {
-    switch (courseInformation.isUpload) {
-      case 0:
-        return <UploadDataButtonSet />
-      case 1:
-        return <ViewDataButtonSet toggleModal={toggleModal!} />
-      default:
-        break;
-    }
-  }
   return (
 
     <tr className='text-center'>
@@ -26,11 +16,11 @@ function TableRow({ courseInformation, toggleModal }: { courseInformation: Cours
       <td>
         {`${courseInformation.year}/${courseInformation.semester}`}
       </td>
-      <td>
+      <td className='w-2'>
         {courseInformation.section}
       </td>
-      <td className='px-2'>{
-        getDataStateComponent()
+      <td className='px-2' >{
+        <UploadDataButtonSet isUpload={courseInformation.isUpload}/>
       }
       </td>
     </tr>

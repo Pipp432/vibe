@@ -7,11 +7,11 @@ function Table({ toggleModal }: { toggleModal: () => void }) {
     <table className='w-[80vw] h-[30vh] shadow-black shadow-md table-fixed'>
       <tbody>
         <tr className='bg-primary text-white text-lg'>
-          <th className='w-40'>Course ID</th>
-          <th>Course Name</th>
-          <th className=''>Semester</th>
-          <th>Section</th>
-          <th className='w-[40%]'>Data</th>
+          <th className='w-[10%]'>Course ID</th>
+          <th className='w-[15%]'>Course Name</th>
+          <th className='w-[15%]'>Semester</th>
+          <th className='w-[5%]'>Section</th>
+          <th className='w-[60%]'>Data</th>
         </tr>
         <TableRow courseInformation={{
           name: 'MLDL',
