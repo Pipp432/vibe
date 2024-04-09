@@ -1,10 +1,10 @@
 'use client'
 import React, { useState, useRef } from 'react'
 import ViewDataButtonSet from './ViewDataButtonSet'
-function UploadDataButtonSet({isUpload}:{isUpload:number}) {
+function UploadDataButtonSet({isUpload,toggleModal}:{isUpload:number,toggleModal:()=>void}) {
   const formElement = useRef(null);
   const [isProcessing, setIsProcessing] = useState(false)
-  const [isSuccess,setIsSuccess] = useState(false)
+  const [isSuccess,setIsSuccess] = useState(isUpload===1)
   const [filename, setFilename] = useState("No Data")
   const sendFileToML = async (e: any) => {
     e.preventDefault();
@@ -32,7 +32,7 @@ function UploadDataButtonSet({isUpload}:{isUpload:number}) {
           <button type='submit' className='text-white rounded-full bg-success p-2 w-52' hidden={isProcessing} onClick={() => { setIsProcessing(true) }}>Submit</button>
         </div>
       </form>}
-      {isSuccess && <ViewDataButtonSet toggleModal={()=>{}}/>}
+      {isSuccess && <ViewDataButtonSet toggleModal={toggleModal}/>}
     </>
   )
 }
