@@ -1,11 +1,11 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 
-const DatePicker = ({ onSubmit, handleSelectDate, pageName = 'analysis' }: { onSubmit: (() => void) | ((semester: string, section: number, year: string) => void), pageName: string, handleSelectDate?: (date: string) => void }) => {
+const DatePicker = ({ onSubmit, handleSelectDate=()=>{}, pageName = 'analysis' }: { onSubmit: (() => void) | ((semester: string, section: number, year: string) => void), pageName: string, handleSelectDate: (date: string) => void }) => {
   const [selectedYear, setSelectedYear] = useState("")
   const [selectedSemester, setSelectedSemester] = useState("")
   const [selectSection, setSelectedSection] = useState(-1)
-  const years = ["2020", "2021", "2022", "2023", "2024"]
+  const years = ["2020", "2021", "2022", "2023", "2024", "all"]
   const semesters = ["1", "2", "summer"]
   const handleSelectYear = (key: string) => {
     if (selectedYear === key) {
@@ -95,11 +95,10 @@ const DatePicker = ({ onSubmit, handleSelectDate, pageName = 'analysis' }: { onS
 
 
   useEffect(() => {
-
     if (pageName === 'analysis') {
-
-      if (selectedYear && selectedSemester) {
-
+      if(selectedYear==='all') {handleSelectDate(selectedYear) 
+        onSubmit();}
+      else if (selectedYear && selectedSemester) {
         if (handleSelectDate !== undefined) handleSelectDate(selectedYear + '/' + selectedSemester)
         onSubmit();
       }
