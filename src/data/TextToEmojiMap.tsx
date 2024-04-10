@@ -10,11 +10,11 @@ const textToEmojiMap = ({ text }: { text: string }) => {
     case "anger":
       return <Image alt={"anger"} height={height} width={width} src="/images/anger.jpg" />
     case "disapproval":
-      return <Image height={"25"} width={"25"} alt="disapproval" src="/images/disapproval.jpg" />
+      return <Image height={"26"} width={"26"} alt="disapproval" src="/images/disapproval.jpg" />
     case "disappointment":
       return <Image alt={"disappointment"} height={height} width={width} src="/images/disappointment.jpg" />
     case "approval":
-      return <Image height={height} width={width} alt="approval" src="/images/approval.jpg" />
+      return <Image height={"31"} width={"31"} alt="approval" src="/images/approval.jpg" />
     case "gratitude":
       return <Image alt={"graditude"} height={height} width={width} src="/images/gratitude.jpg" />
     case "admiration":
