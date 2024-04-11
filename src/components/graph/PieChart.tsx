@@ -44,7 +44,15 @@ function PieChart({ chartData }: { chartData: any }) {
             },
             title: {
               display: true,
-            }
+            },
+            legend:{
+              position:'top',
+              labels:{
+                padding:15
+              }
+            },
+            
+            
           }
         }}
       />
