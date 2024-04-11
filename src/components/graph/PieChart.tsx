@@ -44,6 +44,11 @@ function PieChart({ chartData }: { chartData: any }) {
             },
             title: {
               display: true,
+            },
+            legend:{
+              title:{
+                position:"start"
+              }
             }
           }
         }}

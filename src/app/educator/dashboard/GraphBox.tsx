@@ -7,23 +7,6 @@ import { Data } from '@/data/data'
 import { CategoryScale } from "chart.js";
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import RadarChart from '@/components/graph/RadarChart'
-
-const options = {
-  plugins: {
-    datalabels: {
-      formatter: (value: any, ctx: any) => {
-        let sum = 0;
-        let dataArr = ctx.chart.data.datasets[0].data;
-        dataArr.map((data: any) => {
-          sum += parseInt(data);
-        });
-        let percentage = (value * 100 / sum).toFixed(2) + "%";
-        return percentage;
-      },
-      color: '#fff',
-    }
-  }
-};
 function GraphBox({ graphTitle, toggleModal, graph }:
   {
     graphTitle: string, toggleModal: () => void, graph: string,
@@ -49,7 +32,7 @@ function GraphBox({ graphTitle, toggleModal, graph }:
         borderColor: "black",
         borderWidth: 2
       }
-    ], options: options
+    ], 
   });
 
   const handleRenderChart = () => {
