@@ -1,5 +1,4 @@
 import React from 'react'
-import TextToEmojiMap from '@/data/TextToEmojiMap'
 import EmotionRankChartComponent from './EmotionRankChartComponent'
 function EmotionRankChart({ data, course }: { data: any, course?: String }) {
   return (

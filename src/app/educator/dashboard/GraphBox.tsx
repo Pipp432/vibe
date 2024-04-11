@@ -3,10 +3,10 @@ import Chart from 'chart.js/auto'
 import PieChart from '@/components/graph/PieChart'
 import BarChart from '@/components/graph/BarChart'
 import CardWrapper from "@/components/general/CardWrapper"
-import { Data } from '@/data/data'
 import { CategoryScale } from "chart.js";
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import RadarChart from '@/components/graph/RadarChart'
+import { analysisData } from '@/data/analysisData'
 
 const options = {
   plugins: {
@@ -34,17 +34,18 @@ function GraphBox({ graphTitle, toggleModal, graph }:
   Chart.register(ChartDataLabels);
   const [chart, setChart] = useState<ReactNode>();
   const [chartData, setChartData] = useState({
-    labels: Data.map((data: any) => data.emotion),
+    labels: analysisData.map((data: any) => data.emotion),
     datasets: [
       {
         label: "Number of evaluations ",
-        data: Data.map((data: any) => data.evaluations),
+        data: analysisData.map((data: any) => data.evaluations),
         backgroundColor: [
           "rgba(75,192,192,0.5)",
           "#50AF95",
           "#FF0000",
           "#f3ba2f",
-          "#2a71d0"
+          "#2a71d0",
+
         ],
         borderColor: "black",
         borderWidth: 2
