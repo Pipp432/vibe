@@ -18,7 +18,7 @@ export default function useLogin() {
 
 
       const userData = await fetch("http://127.0.0.1:5000/query_user", { method: "POST", body: username })
-      console.log(userData)
+      const data = await userData.json()
       setIsLoading(false)
       router.push("/educator/dashboard");
     }
