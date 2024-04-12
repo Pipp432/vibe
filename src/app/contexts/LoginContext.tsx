@@ -1,22 +1,22 @@
 'use client'
-import { Dispatch, ReactNode, createContext, useReducer } from 'react';
+import { Dispatch, ReactNode, Reducer, createContext, useReducer } from 'react';
+import { LoginDispatchType, ProfessorType } from '../../../types';
 
-const LoginContext = createContext(null);
-const LoginDispatchContext = createContext<any>(null);
-export function LoginProvider({ children }:{children:ReactNode}) {
-  const intialLogin = {name:'John',surname:'Doe'}
-  const loginReducer =(state:any,action:any)=>{
+export const LoginContext = createContext(null as unknown as ProfessorType);
+export const LoginDispatchContext = createContext<Dispatch<LoginDispatchType>>(null as unknown as Dispatch<LoginDispatchType>);
+export function LoginProvider({ children }: { children: ReactNode }) {
+  const intialLogin:ProfessorType = {emailChula:"", firstName: 'John', lastName: 'Doe', role: 'N/A' }
+  const loginReducer = (state: ProfessorType, action: LoginDispatchType) => {
     switch (action.type) {
-      case 'set':
-        
-        break;
+      case 'login':
+        return { ...state, firstName: action.payload.firstName, lastName: action.payload.lastName, role: action.payload.role, emailChula:action.payload.emailChula }
 
       default:
         break;
     }
   }
-  const [loginState,dispatch] = useReducer(loginReducer,intialLogin)
-  
+  const [loginState, dispatch] = useReducer<Reducer<any,any>>(loginReducer, intialLogin)
+
   return (
     <LoginContext.Provider value={loginState}>
       <LoginDispatchContext.Provider value={dispatch}>

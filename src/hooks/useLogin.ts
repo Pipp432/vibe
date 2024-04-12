@@ -1,11 +1,13 @@
 'use client'
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import app from "../firebase";
+import { LoginDispatchContext } from "@/app/contexts/LoginContext";
 export default function useLogin() {
 
   const auth = getAuth(app);
+  const dispatch = useContext(LoginDispatchContext)
 
   const router = useRouter();
   const [username, setUsername] = useState("")
@@ -15,10 +17,10 @@ export default function useLogin() {
   const handleUserLogin = async () => {
     try {
       await signInWithEmailAndPassword(auth, username, password)
-
-
       const userData = await fetch("http://127.0.0.1:5000/query_user", { method: "POST", body: username })
-      const data = await userData.json()
+      const arrayData = await userData.json()
+      const data = arrayData[0]
+      dispatch({type:"login",payload:{emailChula:data[0],firstName:data[1],lastName:data[2],role:data[3]}})
       setIsLoading(false)
       router.push("/educator/dashboard");
     }

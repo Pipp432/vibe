@@ -61,3 +61,7 @@ export type CourseSearchFormDataType = {
   name?:string,
   courseID?:string,
 }
+export type LoginDispatchType={
+  type:string,
+  payload:ProfessorType
+}

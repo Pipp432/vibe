@@ -5,7 +5,6 @@ import LoginInput from "../../components/login/LoginInput";
 import BigButton from "@/components/general/BigButton";
 import LoadingPage from "@/components/loading/LoadingPage";
 import useLogin from "@/hooks/useLogin";
-import { LoginProvider } from "../contexts/LoginContext";
 export default function LoginPage() {
   const { loginFunction, loginState } = useLogin();
   const InputStyles = {
@@ -13,6 +12,8 @@ export default function LoginPage() {
     "error": "p-2 w-[600px] h-[50px] rounded-2xl bg-background border-red-500 border-4"
 
   }
+  
+
 
   return (
     <>
