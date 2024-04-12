@@ -12,12 +12,13 @@ export default function useLogin() {
   const [password, setPassword] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState(false)
-
   const handleUserLogin = async () => {
     try {
       await signInWithEmailAndPassword(auth, username, password)
 
 
+      const userData = await fetch("http://127.0.0.1:5000/query_user", { method: "POST", body: username })
+      console.log(userData)
       setIsLoading(false)
       router.push("/educator/dashboard");
     }
@@ -40,5 +41,5 @@ export default function useLogin() {
     setIsLoading(true);
     handleUserLogin();
   }
-  return { loginFunction: { handleSubmit,handleUsernameChange, handlePasswordChange, handleUserLogin }, loginState: { username, password, isLoading, isError } }
+  return { loginFunction: { handleSubmit, handleUsernameChange, handlePasswordChange, handleUserLogin }, loginState: { username, password, isLoading, isError } }
 }

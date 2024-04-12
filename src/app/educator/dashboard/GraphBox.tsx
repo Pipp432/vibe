@@ -5,7 +5,8 @@ import BarChart from '@/components/graph/BarChart'
 import CardWrapper from "@/components/general/CardWrapper"
 import { CategoryScale } from "chart.js";
 import ChartDataLabels from 'chartjs-plugin-datalabels';
-import RadarChart from '@/components/graph/RadarChart'
+import RadarChart from '@/components/graph/RadarChart';
+import {analysisData} from '@/data/analysisData'
 function GraphBox({ graphTitle, toggleModal, graph }:
   {
     graphTitle: string, toggleModal: () => void, graph: string,
