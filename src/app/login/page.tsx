@@ -12,9 +12,6 @@ export default function LoginPage() {
     "error": "p-2 w-[600px] h-[50px] rounded-2xl bg-background border-red-500 border-4"
 
   }
-  
-
-
   return (
     <>
       {loginState.isLoading && <LoadingPage />}
