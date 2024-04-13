@@ -10,7 +10,6 @@ export function LoginProvider({ children }: { children: ReactNode }) {
     switch (action.type) {
       case 'login':
         return { ...state, firstName: action.payload.firstName, lastName: action.payload.lastName, role: action.payload.role, emailChula:action.payload.emailChula }
-
       default:
         break;
     }
