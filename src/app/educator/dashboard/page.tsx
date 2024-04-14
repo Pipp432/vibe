@@ -14,7 +14,6 @@ export default function DashboardPage() {
   const [isEmotionModalOpen, toggleEmotionModal] = useModal()
   const [isChangeGraphModalOpen, toggleChangeGraphModal] = useModal()
   const [graph,setGraph] = useState("PIE_CHART");
-  console.log(process.env.FIREBASE_API_KEY)
   
   return (
     <div className="flex gap-10 pt-32 pl-14 justify-center">

@@ -1,9 +1,8 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 
-function CoursePicker({onSubmit,handleSelectCourse}:{onSubmit:()=>void,handleSelectCourse:(course:string)=>void}) {
+function CoursePicker({courses,onSubmit,handleSelectCourse}:{courses:Array<string>,onSubmit:()=>void,handleSelectCourse:(course:string)=>void}) {
 
-  const courses = ['123456', '234567', '124325', '234354']
   const [filter, setFilter] = useState("")
   const [filteredCourses, setFilteredCourses] = useState(courses)
   useEffect(() => {

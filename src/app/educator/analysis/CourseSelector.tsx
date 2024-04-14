@@ -1,16 +1,25 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect,useContext } from 'react'
 import CoursePicker from '@/components/analysis/CoursePicker'
 import DatePicker from "@/components/analysis/DatePicker"
+import queryCourses from '@/services/analysisService';
+import { LoginContext } from '@/app/contexts/LoginContext';
 function CourseSelector({ onFormComplete }: { onFormComplete: (e: Array<string>) => void }) {
-
+  const [courses,setCourses] = useState([])
+  const [years,setYears] = useState([])
   const [isSelectCourseOpen, setIsSelectCourseOpen] = useState(false);
   const [isSelectDateOpen, setIsSelectDateOpen] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState("")
   const [selectedDate, setSelectedDate] = useState("")
   const toggleSelectCourseHandler = () => { setIsSelectCourseOpen(!isSelectCourseOpen) }
   const toggleSelectDateHandler = () => { setIsSelectDateOpen(!isSelectDateOpen) }
-
+  const loginState = useContext(LoginContext)
+  const query = async ()=>{
+    const data= await queryCourses(`SELECT * FROM Teaches WHERE emailChula='${loginState.emailChula}'`)
+    setCourses(data.courses)
+    setYears(data.dates) 
+  }
   useEffect(() => {
+    query();
     if (selectedDate && selectedCourse) onFormComplete([selectedDate, selectedCourse]);
     else onFormComplete([])
 
@@ -23,7 +32,7 @@ function CourseSelector({ onFormComplete }: { onFormComplete: (e: Array<string>)
           {isSelectCourseOpen &&
             <div className='absolute translate-y-12'>
               <div className='rounded-lg shadow-md bg-white shadow-black'>
-                <CoursePicker onSubmit={toggleSelectCourseHandler} handleSelectCourse={setSelectedCourse} />
+                <CoursePicker courses = {courses} onSubmit={toggleSelectCourseHandler} handleSelectCourse={setSelectedCourse} />
               </div>
             </div>
           }
@@ -34,7 +43,7 @@ function CourseSelector({ onFormComplete }: { onFormComplete: (e: Array<string>)
           {isSelectDateOpen &&
             <div className='absolute translate-y-12'>
               <div className='p-2 rounded-lg shadow-md bg-white shadow-black'>
-                <DatePicker onSubmit={toggleSelectDateHandler} handleSelectDate={setSelectedDate} />
+                <DatePicker years = {years} onSubmit={toggleSelectDateHandler} handleSelectDate={setSelectedDate} />
               </div>
 
             </div>}
