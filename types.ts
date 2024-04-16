@@ -44,24 +44,19 @@ export type EmotionObjectType = {
   "admiration": number;
 }
 export type ContextEmotionObjectType = {
-  "Teaching": EmotionObjectType;
-  "Assessment": EmotionObjectType;
-  "Teaching Material": EmotionObjectType;
-  "Facility": EmotionObjectType;
-  "None": EmotionObjectType;
-
+  [key: string]: EmotionObjectType
 }
 export type ContextType = {
-  "context":ContextEmotionObjectType; 
+  "context": ContextEmotionObjectType;
 }
 export type CourseSearchFormDataType = {
-  year:string,
-  semester:string,
-  section:number,
-  name?:string,
-  courseID?:string,
+  year: string,
+  semester: string,
+  section: number,
+  name?: string,
+  courseID?: string,
 }
-export type LoginDispatchType={
-  type:string,
-  payload:ProfessorType
+export type LoginDispatchType = {
+  type: string,
+  payload: ProfessorType
 }
