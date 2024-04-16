@@ -6,8 +6,8 @@ import { ContextEmotionObjectType } from '../../../../types'
 function AnalysisInformation({ analysisData, openModal }: { analysisData: any, openModal: () => void }) {
   const contextData:ContextEmotionObjectType= analysisData?.ContextnEmotion?.context
   return (
-    <>
-      <div className='flex flex-col gap-10'>
+     <>
+      {analysisData.length!==0 &&<div className='flex flex-col gap-10'>
         <div className='text-4xl'>{analysisData?.name?.toLocaleUpperCase()}</div>
         <div className='flex gap-4'>
           <AnalysisGraphBox graphTitle='evaluations and emotions' />
@@ -20,7 +20,8 @@ function AnalysisInformation({ analysisData, openModal }: { analysisData: any, o
           </div>
           <button className='rounded-lg bg-subTab p-2 text-items-center2xl'>Print Report</button>
         </div>
-      </div>
+      </div>}
+      {analysisData.length===0 && <div className='text-red-500 text-3xl'>{"No data avaliable for this course, academic year, or semester"}</div>}
     </>)
 }
 
