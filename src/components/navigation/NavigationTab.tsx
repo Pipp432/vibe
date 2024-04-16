@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect,  useState } from 'react'
 import NavigationItem from './NavigationItem'
 import Image from 'next/image'
 import logo from "../../../public/images/logo.png"
@@ -16,8 +16,6 @@ function NavigationTab() {
 
     if(currentSelection>changePosition) setPosition(position - 16.5*(currentSelection-changePosition))
     if(currentSelection<changePosition)setPosition(position +16.5*(changePosition-currentSelection))
-    console.log(currentSelection,changePosition);
-    console.log(position)
     
     setCurrentSelection(changePosition)
     
@@ -31,7 +29,6 @@ function NavigationTab() {
     "information":3
   }
   useEffect(() => {
-    console.log(pagename)
     changeIndicatorPosition(pathDict[pagename])
    })
   return (

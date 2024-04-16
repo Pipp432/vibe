@@ -19,6 +19,8 @@ const textToEmojiMap = ({ text }: { text: string }) => {
       return <Image alt={"graditude"} height={height} width={width} src="/images/gratitude.jpg" />
     case "admiration":
       return <Image height={height} width={width} alt="admiration" src="/images/admiration.jpg" />
+    case "confusion":
+      return <Image height={"26"} width={"26"} alt='confusion' src="/images/confusion.jpg"/>
     default:
       break;
   }

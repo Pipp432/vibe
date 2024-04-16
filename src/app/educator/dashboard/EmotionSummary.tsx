@@ -1,8 +1,10 @@
-import React from 'react'
+'use client'
+import React, { useEffect, useState } from 'react'
 import EmotionRankChart from "@/components/graph/EmotionRankChart"
 import CardWrapper from "@/components/general/CardWrapper"
 import InformationButton from '@/components/general/InformationButton'
-function EmotionSummary({ toggleModal }: { toggleModal: () => void }) {
+import { sortObject } from '../../helper/sortObject'
+function EmotionSummary({ emotionAndCourseData, toggleModal }: { emotionAndCourseData: any, toggleModal: () => void }) {
   return (
 
     <CardWrapper>
@@ -16,16 +18,9 @@ function EmotionSummary({ toggleModal }: { toggleModal: () => void }) {
         <div className="flex flex-col gap-8">
           <div className='flex flex-row gap-5'>
             <div className="flex flex-col gap-5 w-[25vw]">
-              <EmotionRankChart percentage={["50%", "40%", "10%"]} course={"2102134"} />
-              <EmotionRankChart percentage={["50%", "40%", "10%"]} course={"2102134"} />
-              <EmotionRankChart percentage={["50%", "40%", "10%"]} course={"2102134"} />
-              <EmotionRankChart percentage={["50%", "40%", "10%"]} course={"2102134"} />
-              <EmotionRankChart percentage={["50%", "40%", "10%"]} course={"2102134"} />
-              <EmotionRankChart percentage={["40%", "30%", "30%"]} course={"202324"} />
-              <EmotionRankChart percentage={["40%", "30%", "30%"]} course={"202324"} />
-              <EmotionRankChart percentage={["40%", "30%", "30%"]} course={"202324"} />
-              <EmotionRankChart percentage={["50%", "40%", "10%"]} course={"230543"} />
-
+              {emotionAndCourseData.map((data: any, index: number) => {
+                return <EmotionRankChart key={index} course={data.courseID} data={sortObject(data.OverallEmotion)} />
+              })}
             </div>
           </div>
         </div>

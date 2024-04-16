@@ -1,11 +1,10 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 
-const DatePicker = ({ years,onSubmit, handleSelectDate=()=>{}, pageName = 'analysis' }: {years:Array<string>, onSubmit: (() => void) | ((semester: string, section: number, year: string) => void), pageName: string, handleSelectDate: (date: string) => void }) => {
+const DatePicker = ({ semesters, years, onSubmit, handleSelectDate = () => { }, pageName = 'analysis' }: { semesters:Array<string>, years: Array<string>, onSubmit: (() => void) | ((semester: string, section: number, year: string) => void), pageName: string, handleSelectDate: (date: string) => void }) => {
   const [selectedYear, setSelectedYear] = useState("")
   const [selectedSemester, setSelectedSemester] = useState("")
   const [selectSection, setSelectedSection] = useState(-1)
-  const semesters = ["1", "2", "summer"]
   const handleSelectYear = (key: string) => {
     if (selectedYear === key) {
       setSelectedYear("")
@@ -37,7 +36,7 @@ const DatePicker = ({ years,onSubmit, handleSelectDate=()=>{}, pageName = 'analy
         <div className=' w-1 bg-black rounded-full' />
         <div className='flex flex-col gap-2'>
 
-          {semesters.map((semester) => {
+          {semesters.map((semester:string) => {
             return <div onMouseDown={() => { handleSelectSemester(semester) }} style={{
               borderColor: `${selectedSemester === semester ? 'black' : ''}`,
               color: `${selectedSemester === semester ? 'black' : ''}`
@@ -69,7 +68,7 @@ const DatePicker = ({ years,onSubmit, handleSelectDate=()=>{}, pageName = 'analy
             <div className='flex flex-col gap-2'>
               <div>{"Year"}</div>
               <div className='flex gap-2'>
-                {semesters.map((semester) => {
+                {semesters.map((semester:string) => {
                   return <div onMouseDown={() => { handleSelectSemester(semester) }} style={{
                     borderColor: `${selectedSemester === semester ? 'black' : ''}`,
                     color: `${selectedSemester === semester ? 'black' : ''}`
@@ -95,8 +94,10 @@ const DatePicker = ({ years,onSubmit, handleSelectDate=()=>{}, pageName = 'analy
 
   useEffect(() => {
     if (pageName === 'analysis') {
-      if(selectedYear==='all') {handleSelectDate(selectedYear) 
-        onSubmit();}
+      if (selectedYear === 'all') {
+        handleSelectDate(selectedYear)
+        onSubmit();
+      }
       else if (selectedYear && selectedSemester) {
         if (handleSelectDate !== undefined) handleSelectDate(selectedYear + '/' + selectedSemester)
         onSubmit();

@@ -8,12 +8,12 @@ function EmotionRankChartComponent({ part, width, emotion }: { part: number, emo
     switch (part) {
       case 1:
         return 'rounded-tl-full rounded-bl-full bg-blue-800 flex justify-center p-1 w-full '
-
       case 2:
         return 'bg-sky-600 flex justify-center p-1 w-full'
-
       case 3:
-        return 'bg-slate-600  flex justify-center p-1 w-full rounded-tr-full rounded-br-full'
+        return 'bg-sky-400  flex justify-center p-1 w-full'
+      case 4:
+        return 'bg-slate-600 h-10 flex justify-center p-1 w-full rounded-tr-full rounded-br-full'
       default:
         break;
     }

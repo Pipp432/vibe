@@ -2,18 +2,20 @@ import React from 'react'
 import AnalysisGraphBox from './AnalysisGraphBox'
 import ContextBox from './ContextBox'
 import InformationButton from '@/components/general/InformationButton'
-function AnalysisInformation({ courseName,openModal }: { courseName: string,openModal:()=>void }) {
+import { ContextEmotionObjectType } from '../../../../types'
+function AnalysisInformation({ analysisData, openModal }: { analysisData: any, openModal: () => void }) {
+  const contextData:ContextEmotionObjectType= analysisData?.ContextnEmotion?.context
   return (
     <>
       <div className='flex flex-col gap-10'>
-        <div className='text-4xl'>{courseName?.toLocaleUpperCase()}</div>
+        <div className='text-4xl'>{analysisData?.name?.toLocaleUpperCase()}</div>
         <div className='flex gap-4'>
           <AnalysisGraphBox graphTitle='evaluations and emotions' />
-          <ContextBox />
+          <ContextBox contextData = {contextData} />
         </div>
         <div className='flex gap-32 items-center mt-10' >
           <div className='flex gap-2 items-center'>
-            <div className='text-5xl'>Overall Score: 70</div>
+            <div className='text-5xl'>{`Overall Score: ${analysisData?.EmotionScore?.toFixed(2)}`}</div>
             <InformationButton onClick={openModal} />
           </div>
           <button className='rounded-lg bg-subTab p-2 text-items-center2xl'>Print Report</button>

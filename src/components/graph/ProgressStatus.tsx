@@ -4,13 +4,13 @@ import ProgressStatusCircle from './ProgressStatusCircle'
 function ProgressStatus({ status,courseName }: { status: string, courseName:string }) {
   const statusToColor = () => {
     switch (status) {
-      case "wait":
+      case "No":
 
         return ["#FF0000", "#FFFFFF", "#FFFFFF"]
 
-      case "processing":
+      case "Processing":
         return ["#FFFF00", "#FFFF00", "#FFFFFF"]
-      case "done":
+      case "Yes":
         return ["#00FF00", "#00FF00", "#00FF00"]
       default:
         return ["#FFFFFF", "#FFFFFF", "#FFFFFF"]

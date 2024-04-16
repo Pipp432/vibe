@@ -3,7 +3,8 @@ import React from 'react'
 import CardWrapper from "@/components/general/CardWrapper"
 import InformationButton from '@/components/general/InformationButton'
 import ProgressStatus from "@/components/graph/ProgressStatus"
-function AnalysisProgress({toggleModal}:{toggleModal:()=>void}) {
+function AnalysisProgress({emotionAndCourseData,toggleModal}:{emotionAndCourseData:any,toggleModal:()=>void}) {
+  console.log(emotionAndCourseData)
   return (
     <>
       <CardWrapper>
@@ -15,20 +16,7 @@ function AnalysisProgress({toggleModal}:{toggleModal:()=>void}) {
         <div className="w-[30rem] h-[20rem] overflow-y-scroll">
           <div className="flex flex-col gap-8">
             <div className="flex flex-row gap-5">
-              <div className="flex flex-col gap-5">
-                <ProgressStatus courseName="Intro Sto Mod" status="processing" />
-                <ProgressStatus courseName="Intro Sto Mod" status="processing" />
-                <ProgressStatus courseName="Intro Sto Mod" status="processing" />
-                <ProgressStatus courseName="Intro Sto Mod" status="processing" />
-                <ProgressStatus courseName="Intro Sto Mod" status="processing" />
-                <ProgressStatus courseName="Intro Sto Mod" status="processing" />
-              </div>
-              <div className="flex flex-col gap-5">
-                <ProgressStatus courseName="Intro Sto Mod" status="processing" />
-                <ProgressStatus courseName="Intro Sto Mod" status="processing" />
-                <ProgressStatus courseName="Intro Sto Mod" status="processing" />
-                <ProgressStatus courseName="Intro Sto Mod" status="processing" />
-              </div>
+            {emotionAndCourseData.map((data:any)=>{return <ProgressStatus courseName={data.name} status={data.isUploaded} />})}
             </div>
           </div>
 
