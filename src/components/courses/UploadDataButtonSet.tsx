@@ -11,7 +11,7 @@ function UploadDataButtonSet({isUploaded,toggleModal}:{isUploaded:string,toggleM
     try {
       if (formElement.current) {
         const data = new FormData(formElement.current)
-        setFilename(data.get('file')!.name)
+        //setFilename(data.get('file')!.name)
         const result = await fetch("http://127.0.0.1:5000/ml", { method: "POST",body: data})
         if (result.status === 200) { setIsProcessing(false);  setIsSuccess(true)}
       }
