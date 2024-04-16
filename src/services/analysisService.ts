@@ -27,7 +27,7 @@ export const queryCourseInformation = async (form: Array<string>, loginState: an
   const coursesData = await fetch("http://127.0.0.1:5000/query", { method: "POST", body: query })
   const jsonData = await coursesData.json()
   const data = jsonData[0]
-  if (data[0]) {
+  if (data) {
 
 
     const result = {
