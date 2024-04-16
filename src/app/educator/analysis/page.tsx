@@ -5,16 +5,20 @@ import CourseSelector from './CourseSelector'
 import useModal from '@/hooks/useModal'
 import OverallScorePopup from '@/components/analysis/OverallScorePopup'
 import { LoginContext } from '@/app/contexts/LoginContext'
-import { queryCourseInformation } from '@/services/analysisService'
+import { queryCourseInformation, queryComments } from '@/services/analysisService'
 export default function AnalysisPage() {
   const [isModalOpen, toggleModal] = useModal()
   const [form, setForm] = useState<Array<string>>([])
-  const [data,setData] = useState([] as any)
-  const loginState =useContext(LoginContext)
-  const queryData = async()=>{const data=await queryCourseInformation(form,loginState); setData(data)}
-  useEffect(()=>{
-   if(form.length===2)queryData(); 
-  },[form])
+  const [data, setData] = useState([] as any)
+  const loginState = useContext(LoginContext)
+  const queryData = async () => { const data = await queryCourseInformation(form, loginState); setData(data) }
+  const queryComment = async () => { const commentData = await queryComments(loginState,'2190462' ,'summer', '2024') }
+  useEffect(() => {
+    if (form.length === 2) {
+      queryData();
+      queryComment();
+    }
+  }, [form])
   return (
     <>
       <CourseSelector onFormComplete={(e: Array<string>) => { setForm(e) }} />

@@ -2,32 +2,8 @@
 import React from 'react'
 import TableRow from './TableRow'
 import { CourseType } from '../../../types'
-function Table({ toggleModal }: { toggleModal: () => void }) {
-  const courses: Array<CourseType> = [
+function Table({ tableData, toggleModal }: { tableData: any, toggleModal: () => void }) {
 
-    {
-      name: 'MLDL',
-      courseID: '123456',
-      section: 1,
-      semester: '1',
-      year: "2020",
-      major: "ICE",
-      faculty: 'Enigneering',
-      isUpload: 0
-
-    },
-    {
-      name: 'Intro Mod Sto',
-      courseID: '12378',
-      section: 2,
-      semester: '2',
-      year: "2023",
-      major: "ICE",
-      faculty: 'Enigneering',
-      isUpload: 1
-
-    }
-  ]
   return (
 
     <table className='w-[80vw] h-[30vh] shadow-black shadow-md table-fixed'>
@@ -39,7 +15,18 @@ function Table({ toggleModal }: { toggleModal: () => void }) {
           <th className='w-[5%]'>Section</th>
           <th className='w-[60%]'>Data</th>
         </tr>
-        {courses.map((course:CourseType)=>{return <TableRow courseInformation={course} toggleModal={toggleModal} />})}
+        {tableData.map((data: any) => {
+          return <TableRow courseInformation={{
+            courseID: data[0],
+            major: data[13],
+            faculty: data[14],
+            name: data[12],
+            semester: data[2],
+            year: data[3],
+            section: data[1],
+            isUploaded: data[15]
+          }} toggleModal={toggleModal} />
+        })}
       </tbody>
     </table>
   )

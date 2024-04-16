@@ -6,7 +6,7 @@ export type CourseType = {
   name: string;
   major: string;
   faculty: string;
-  isUpload: number;
+  isUploaded: string;
 }
 export type ProfessorType = {
   emailChula: string;

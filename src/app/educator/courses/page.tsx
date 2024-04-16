@@ -1,5 +1,5 @@
 'use client'
-import React, { useContext, useEffect } from 'react'
+import React, { useState,useContext, useEffect } from 'react'
 import Table from '@/components/courses/Table'
 import SearchBar from '@/components/courses/SearchBar'
 import useModal from '@/hooks/useModal'
@@ -9,19 +9,20 @@ import { LoginContext } from '@/app/contexts/LoginContext'
 function CoursesPage() {
   const loginState = useContext(LoginContext)
   const [isDataDeletionModalOpen, toggleDataDeletionModalOpen] = useModal();
+  const [tableData,setTableData]=useState([] as any)
   const query = async () => {
     const data = await queryCourses(loginState.emailChula)
-    console.log(data)
+    setTableData(data)
   }
   useEffect(() => {
-    query();
+    if(tableData.length===0)query();
   })
   return (
     <>
       {isDataDeletionModalOpen && <DataDeletionConfrimationPopup closeOverlayHandler={toggleDataDeletionModalOpen} />}
       <div className='flex flex-col gap-10 ml-6 mt-40'>
         <SearchBar />
-        <Table toggleModal={toggleDataDeletionModalOpen} />
+        <Table tableData = {tableData} toggleModal={toggleDataDeletionModalOpen} />
       </div>
     </>
   )

@@ -18,7 +18,9 @@ function EmotionalSummaryPopUp({ closeOverlayHandler }: { closeOverlayHandler: (
           <div className='flex gap-2'> <TextToEmojiMap text="joy" />{"Joy"}</div>
           <div className='flex gap-2'> <TextToEmojiMap text="anger" />{"Anger"}</div>
           <div className='flex gap-2'> <TextToEmojiMap text="neutrality" />{"Neutrality"}</div>
+          <div className='flex gap-2'> <TextToEmojiMap text="confusion" />{"Confusion"}</div>
         </div>
+
         <div className='text-sm w-96'>{"These emoticons are based on apple's emoticon set to convey each emotion at a glance the option to toggle between text and emoticon is in the settings page"}</div>
       </div>
 

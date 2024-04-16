@@ -2,6 +2,7 @@ import React from 'react'
 import UploadDataButtonSet from './UploadDataButtonSet'
 import { CourseType } from '../../../types'
 function TableRow({ courseInformation, toggleModal }: { courseInformation: CourseType, toggleModal: () => void }) {
+  console.log(courseInformation.isUploaded)
   return (
 
     <tr className='text-center'>
@@ -19,7 +20,7 @@ function TableRow({ courseInformation, toggleModal }: { courseInformation: Cours
         {courseInformation.section}
       </td>
       <td className='px-2' >{
-        <UploadDataButtonSet isUpload={courseInformation.isUpload} toggleModal={toggleModal}/>
+        <UploadDataButtonSet isUploaded={courseInformation.isUploaded} toggleModal={toggleModal}/>
       }
       </td>
     </tr>

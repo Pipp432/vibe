@@ -36,4 +36,12 @@ export const queryCourseInformation = async (form: Array<string>, loginState: an
   return result
 }
 
-
+export const queryComments = async (loginState: any, courseID:string,semester:string, year:string)=>{
+  const query = `SELECT * FROM Comment 
+  JOIN Course ON Comment.courseID = Course.courseID 
+  JOIN Teaches ON Comment.courseID = Teaches.courseID
+WHERE Teaches.emailChula = '${loginState.emailChula}' AND Teaches.courseID ='${courseID}' AND Comment.semester='${semester}' AND Comment.year='${year}'`
+  const commentData = await fetch("http://127.0.0.1:5000/query", { method: "POST", body: query })
+  const jsonData = await commentData.json()
+  console.log(jsonData)
+}

@@ -11,7 +11,7 @@ function EmotionRankChartComponent({ part, width, emotion }: { part: number, emo
       case 2:
         return 'bg-sky-600 flex justify-center p-1 w-full'
       case 3:
-        return 'bg-sky-400  flex justify-center p-1 w-full'
+        return 'bg-sky-400  h-10 flex justify-center p-1 w-full'
       case 4:
         return 'bg-slate-600 h-10 flex justify-center p-1 w-full rounded-tr-full rounded-br-full'
       default:
