@@ -34,7 +34,6 @@ function SearchBar() {
             <div className='flex gap-10'>
               <div className='flex flex-col gap-2'>
                 {"Semester"}
-                <DatePicker onSubmit={handleSelectYearSemesterSection} pageName='courses'/>
               </div>
             </div>
           </CardWrapper>
