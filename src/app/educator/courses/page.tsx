@@ -15,7 +15,7 @@ function CoursesPage() {
     setTableData(data)
   }
   useEffect(() => {
-    if(tableData.length===0)query();
+    if(tableData.length===0 && loginState.emailChula!="")query();
   })
   return (
     <>
