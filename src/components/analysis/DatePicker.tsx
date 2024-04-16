@@ -1,7 +1,9 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 
-const DatePicker = ({ semesters=["1","2","summer"], years=['2020','2021','2022'], onSubmit, handleSelectDate = () => { }, pageName = 'analysis' }: { semesters?:Array<string>, years?: Array<string>, onSubmit: (() => void) | ((semester: string, section: number, year: string) => void), pageName?: string, handleSelectDate: (date: string) => void }) => {
+const DatePicker = ({ onSubmit, handleSelectDate = () => { }, pageName = 'analysis' }: { onSubmit: (() => void) | ((semester: string, section: number, year: string) => void), pageName?: string, handleSelectDate: (date: string) => void }) => {
+  const years = ["2020","2021","2022","2023","2024"]
+  const semesters = ["1","2","summer"]
   const [selectedYear, setSelectedYear] = useState("")
   const [selectedSemester, setSelectedSemester] = useState("")
   const [selectSection, setSelectedSection] = useState(-1)

@@ -45,7 +45,7 @@ function CourseSelector({ onFormComplete }: { onFormComplete: (e: Array<string>)
           {isSelectDateOpen &&
             <div className='absolute translate-y-12'>
               <div className='p-2 rounded-lg shadow-md bg-white shadow-black'>
-                <DatePicker semesters={semesters} years={years} onSubmit={toggleSelectDateHandler} handleSelectDate={setSelectedDate} />
+                <DatePicker onSubmit={toggleSelectDateHandler} handleSelectDate={setSelectedDate} />
               </div>
 
             </div>}
