@@ -96,16 +96,16 @@ const DatePicker = ({ semesters, years, onSubmit, handleSelectDate = () => { }, 
     if (pageName === 'analysis') {
       if (selectedYear === 'all') {
         handleSelectDate(selectedYear)
-        onSubmit();
+        onSubmit(selectedSemester, selectSection, selectedYear);
       }
       else if (selectedYear && selectedSemester) {
         if (handleSelectDate !== undefined) handleSelectDate(selectedYear + '/' + selectedSemester)
-        onSubmit();
+        onSubmit(selectedSemester, selectSection, selectedYear);
       }
     }
     else {
       if (selectSection) {
-        onSubmit(selectedSemester, selectSection, selectedYear,);
+        onSubmit(selectedSemester, selectSection, selectedYear);
       }
     }
   }, [selectedYear, selectedSemester, selectSection])
