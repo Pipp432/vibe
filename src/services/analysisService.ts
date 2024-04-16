@@ -5,7 +5,7 @@ export const queryCourses = async (query: string) => {
   const result: any = {}
   const tempCourses: any = []
   const tempDates: any = []
-  const tempSemesters:any=[]
+  const tempSemesters: any = []
   data.forEach((dataPoint: Array<any>) => {
     tempCourses.push(dataPoint[0].toString())
     if (!tempDates.includes(dataPoint[3])) tempDates.push(dataPoint[3])
@@ -27,16 +27,23 @@ export const queryCourseInformation = async (form: Array<string>, loginState: an
   const coursesData = await fetch("http://127.0.0.1:5000/query", { method: "POST", body: query })
   const jsonData = await coursesData.json()
   const data = jsonData[0]
-  const result = {
-    name: data[0],
-    courseID:data[1],
-    EmotionScore:data[2] * 100,
-    ContextnEmotion :JSON.parse(data[3])
+  if (data[0]) {
+
+
+    const result = {
+      name: data[0],
+      courseID: data[1],
+      EmotionScore: data[2] * 100,
+      ContextnEmotion: JSON.parse(data[3])
+    }
+    return result
   }
-  return result
+  else {
+    return []
+  }
 }
 
-export const queryComments = async (loginState: any, courseID:string,semester:string, year:string)=>{
+export const queryComments = async (loginState: any, courseID: string, semester: string, year: string) => {
   const query = `SELECT * FROM Comment 
   JOIN Course ON Comment.courseID = Course.courseID 
   JOIN Teaches ON Comment.courseID = Teaches.courseID
