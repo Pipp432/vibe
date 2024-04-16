@@ -15,7 +15,7 @@ function AnalysisProgress({ emotionAndCourseData, toggleModal }: { emotionAndCou
 
         <div className="w-[30rem] h-[20rem] overflow-y-scroll">
           <div className='grid grid-cols-2 gap-x-5'>
-            {emotionAndCourseData.map((data: any) => { return <ProgressStatus courseName={data.name} status={data.isUploaded} /> })}
+            {emotionAndCourseData.map((data: any, index:number) => { return <ProgressStatus key={index} courseName={data.name} status={data.isUploaded} /> })}
           </div>
         </div>
       </CardWrapper>

@@ -15,8 +15,8 @@ function Table({ tableData, toggleModal }: { tableData: any, toggleModal: () => 
           <th className='w-[5%]'>Section</th>
           <th className='w-[60%]'>Data</th>
         </tr>
-        {tableData.map((data: any) => {
-          return <TableRow courseInformation={{
+        {tableData.map((data: any,index:number) => {
+          return <TableRow key={index} courseInformation={{
             courseID: data[0],
             major: data[13],
             faculty: data[14],

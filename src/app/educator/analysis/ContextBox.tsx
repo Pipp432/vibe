@@ -15,7 +15,7 @@ function ContextBox({ contextData }: { contextData: ContextEmotionObjectType }) 
   return (
     <CardWrapper>
       <div className='flex flex-col justify-center items-center gap-4 w-[28vw] pt-[4vh]'>
-        {data.map((context: string) => { return <ContextItem contextName={context} emotionPercentages={contextData[context]} /> })}
+        {data.map((context: string,index:number) => { return <ContextItem key={index} contextName={context} emotionPercentages={contextData[context]} /> })}
       </div>
     </CardWrapper>
   )
