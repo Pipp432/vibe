@@ -5,8 +5,6 @@ import { queryCourses } from '@/services/analysisService';
 import { LoginContext } from '@/app/contexts/LoginContext';
 function CourseSelector({ onFormComplete }: { onFormComplete: (e: Array<string>) => void }) {
   const [courses, setCourses] = useState([])
-  const [years, setYears] = useState([])
-  const [semesters, setSemesters] = useState([])
   const [isSelectCourseOpen, setIsSelectCourseOpen] = useState(false);
   const [isSelectDateOpen, setIsSelectDateOpen] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState("")
@@ -17,8 +15,6 @@ function CourseSelector({ onFormComplete }: { onFormComplete: (e: Array<string>)
   const query = async () => {
     const data = await queryCourses(`SELECT * FROM Teaches WHERE emailChula='${loginState.emailChula}'`)
     setCourses(data.courses)
-    setYears(data.dates)
-    setSemesters(data.semesters)
   }
   useEffect(() => {
     query();
@@ -49,7 +45,13 @@ function CourseSelector({ onFormComplete }: { onFormComplete: (e: Array<string>)
               </div>
 
             </div>}
-
+          {(selectedDate === '' || selectedCourse === '') &&
+            <div className='grid place-items-center h-[70vh] text-3xl ml-[10vw]'>
+              {selectedDate === '' && selectedCourse === '' && <div>{"Please select date and course"}</div>}
+              {selectedDate === '' && selectedCourse !== '' && <div>{"Please select date"}</div>}
+              {selectedCourse === '' && selectedDate !== '' && <div>{"Please select course"}</div>}
+            </div>
+          }
         </div>
       </div>
     </>

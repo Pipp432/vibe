@@ -1,12 +1,10 @@
 
 import React from 'react'
 import TableRow from './TableRow'
-import { CourseType } from '../../../types'
 function Table({ tableData, toggleModal }: { tableData: any, toggleModal: () => void }) {
-
   return (
-
-    <table className='w-[80vw] h-[30vh] shadow-black shadow-md table-fixed'>
+    <>
+    {tableData.length!==0 && <table className='w-[80vw] h-[30vh] shadow-black shadow-md table-fixed'>
       <tbody>
         <tr className='bg-primary text-white text-lg'>
           <th className='w-[10%]'>Course ID</th>
@@ -28,7 +26,8 @@ function Table({ tableData, toggleModal }: { tableData: any, toggleModal: () => 
           }} toggleModal={toggleModal} />
         })}
       </tbody>
-    </table>
+    </table>}
+  </>
   )
 }
 

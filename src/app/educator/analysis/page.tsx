@@ -31,6 +31,9 @@ export default function AnalysisPage() {
 
         </div>
       }
+
+
+      
       {isModalOpen && <OverallScorePopup closeOverlayHandler={toggleModal} />}
     </>
   )
