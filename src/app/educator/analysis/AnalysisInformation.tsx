@@ -10,7 +10,7 @@ import { ContextEmotionObjectType } from '../../../../types'
       {analysisData.length!==0 &&<div className='flex flex-col gap-10'>
         <div className='text-4xl'>{analysisData?.name?.toLocaleUpperCase()}</div>
         <div className='flex gap-4'>
-          <AnalysisGraphBox graphTitle='evaluations and emotions' />
+          <AnalysisGraphBox graphTitle='Evaluations and Emotions' />
           <ContextBox contextData = {contextData} />
         </div>
         <div className='flex gap-32 items-center mt-10' >
