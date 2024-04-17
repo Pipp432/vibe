@@ -22,7 +22,6 @@ import { ContextEmotionObjectType } from '../../../../types'
           <button className='rounded-lg bg-subTab p-2 text-items-center2xl'>Print Report</button>
         </div>
       </div>}
-      {analysisData.length===0 && <div className='text-red-500 text-3xl'>{"No data avaliable for this course, academic year, or semester"}</div>}
     </>)
 }
 
