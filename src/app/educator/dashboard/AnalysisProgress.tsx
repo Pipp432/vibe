@@ -1,10 +1,9 @@
-'use client'
 import React from 'react'
 import CardWrapper from "@/components/general/CardWrapper"
 import InformationButton from '@/components/general/InformationButton'
 import ProgressStatus from "@/components/graph/ProgressStatus"
 function AnalysisProgress({ emotionAndCourseData, toggleModal }: { emotionAndCourseData: any, toggleModal: () => void }) {
-  console.log(emotionAndCourseData)
+
   return (
     <>
       <CardWrapper>
