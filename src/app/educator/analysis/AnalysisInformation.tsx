@@ -4,7 +4,6 @@ import ContextBox from './ContextBox'
 import InformationButton from '@/components/general/InformationButton'
 import { ContextEmotionObjectType } from '../../../../types'
  function AnalysisInformation({ analysisData, openModal }: { analysisData: any, openModal: () => void }) {
-  
   const contextData:ContextEmotionObjectType= analysisData?.ContextnEmotion?.context
   return (
      <>

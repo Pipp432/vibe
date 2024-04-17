@@ -30,7 +30,7 @@ function NavigationTab() {
   }
   useEffect(() => {
     changeIndicatorPosition(pathDict[pagename])
-   })
+   },[pagename])
   return (
     <>
     <div className='w-72 h-full bg-primary relative'>

@@ -21,7 +21,7 @@ export default function LoginPage() {
         </div>
 
         <div className='bg-primary h-full w-[40%]  p-10'>
-          <div className='flex mt-28 flex-col gap-16'>
+          <div className='flex mt-36 flex-col gap-16'>
             <LoginInput isPassword={false} title='Username'
               onChangeHandler={loginFunction.handleUsernameChange}
               style={loginState.isError ? InputStyles.error : InputStyles.normal} />
@@ -29,17 +29,14 @@ export default function LoginPage() {
               <LoginInput isPassword={true} title='Password' onChangeHandler={loginFunction.handlePasswordChange}
                 style={loginState.isError ? InputStyles.error : InputStyles.normal} />
               {!loginState.isError && <div className='flex flex-row-reverse mt-4'>
-                <div className='text-white cursor-pointer'>{"Forgot Password?"}</div>
+                <div className='text-white cursor-pointer mb-28'>{"Forgot Password?"}</div>
               </div>}
 
               {loginState.isError && <div className="flex flex-row gap-48 mt-4">
                 <div className="text-red-500">{"Invalid Username or Password"}</div>
 
-                <div className='text-white cursor-pointer'>{"Forgot Password?"}</div>
+                <div className='text-white cursor-pointer mb-28'>{"Forgot Password?"}</div>
               </div>}
-              <div className='flex items-center justify-center my-16'>
-                <div className='border-8 border-red-500 h-28 w-96 rounded-xl'></div>
-              </div>
               <BigButton displayText='Login'
                 onClick={loginFunction.handleSubmit
                 } />

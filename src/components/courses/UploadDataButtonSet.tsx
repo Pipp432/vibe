@@ -3,7 +3,7 @@ import React, { useState, useRef } from 'react'
 import ViewDataButtonSet from './ViewDataButtonSet'
 function UploadDataButtonSet({isUploaded,toggleModal}:{isUploaded:string,toggleModal:()=>void}) {
   const formElement = useRef(null);
-  const [isProcessing, setIsProcessing] = useState(false)
+  const [isProcessing, setIsProcessing] = useState(isUploaded==='Processing')
   const [isSuccess,setIsSuccess] = useState(isUploaded==="Yes")
   const [filename, setFilename] = useState("No Data")
   const sendFileToML = async (e: any) => {
@@ -29,7 +29,8 @@ function UploadDataButtonSet({isUploaded,toggleModal}:{isUploaded:string,toggleM
             {"Upload"}
           </label>
           <input id='file-upload' name='file' className='hidden' type='file' onChange={(e:any) => { setFilename(e.target.files[0].name) }}></input>
-          <button type='submit' className='text-white rounded-full bg-success p-2 w-52' hidden={isProcessing} onClick={() => { setIsProcessing(true) }}>Submit</button>
+          <button type='submit' style={{backgroundColor:`${filename!=='No Data'?"":"#B8B8B8"}`}} className='text-white rounded-full bg-success p-2 w-52' hidden={isProcessing} onClick={() => { setIsProcessing(true) }}>Submit</button>
+          
         </div>
       </form>}
       {isSuccess && <ViewDataButtonSet toggleModal={toggleModal}/>}

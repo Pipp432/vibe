@@ -26,7 +26,7 @@ function CoursesPage() {
       <div className='flex flex-col gap-10 ml-6 mt-40 w-[70vw]'>
         <SearchBar />
         <Table tableData={tableData} toggleModal={toggleDataDeletionModalOpen} />
-        {isLoading && <div className='flex items-center justify-center mt-20 w-[100%]'><Spinner/></div>}
+        {isLoading && <div className='flex items-center justify-center  w-[100%]'><Spinner/></div>}
       </div>
     </>
   )
