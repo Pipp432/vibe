@@ -20,10 +20,13 @@ export default function useLogin() {
       await signInWithEmailAndPassword(auth, username, password)
       const data: Array<string> = await queryUserData(`SELECT * FROM Professor Where emailChula = '${username}'`);
       dispatch({ type: "login", payload:{ emailChula: data[0], firstName: data[1], lastName: data[2], role: data[3] } })
+      if(typeof window !=='undefined'){
+
       localStorage.setItem("emailChula",data[0])
       localStorage.setItem("firstName",data[1])
       localStorage.setItem("lastName",data[2])
       localStorage.setItem("role",data[3])
+      }
       setIsLoading(false)
       router.push("/educator/dashboard");
     }
