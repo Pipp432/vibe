@@ -20,8 +20,11 @@ function EmotionRankChartComponent({ part, width, emotion }: { part: number, emo
   }
   return (
     <div className='flex flex-col items-center' style={{ width: width }} >
-      {isHover && <div className='z-10 absolute -translate-y-12 duration-200'><EmotionRankChartPopUp emotion = {emotion}/></div>}
-      <div onMouseEnter={() => { setIsHover(true) }} onMouseLeave={() => { setIsHover(false) }}className={getStyle()}><TextToEmojiMap text={emotion} /></div>
+      {isHover && <div className='z-10 absolute -translate-y-12 duration-200'><EmotionRankChartPopUp emotion={emotion} width={width}/></div>}
+      <div onMouseEnter={() => { setIsHover(true) }} onMouseLeave={() => { setIsHover(false) }} className={getStyle()}>
+        <TextToEmojiMap text={emotion} />
+
+      </div>
     </div>
   )
 }

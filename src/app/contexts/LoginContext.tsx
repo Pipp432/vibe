@@ -1,11 +1,17 @@
 'use client'
-import { Dispatch, ReactNode, Reducer, createContext, useReducer } from 'react';
+import { useEffect,Dispatch, ReactNode, Reducer, createContext, useReducer } from 'react';
 import { LoginDispatchType, ProfessorType } from '../../../types';
 
 export const LoginContext = createContext(null as unknown as ProfessorType);
 export const LoginDispatchContext = createContext<Dispatch<LoginDispatchType>>(null as unknown as Dispatch<LoginDispatchType>);
 export function LoginProvider({ children }: { children: ReactNode }) {
-  const intialLogin:ProfessorType = {emailChula:"", firstName: 'John', lastName: 'Doe', role: 'N/A' }
+  const currentUser = {"emailChula":"", "firstName": "John", "lastName": "Doe", "role": "N/A"}
+  const intialLogin:ProfessorType = {
+    emailChula:localStorage.getItem('emailChula')||'',
+    firstName:localStorage.getItem('firstName')||"Joe",
+    lastName:localStorage.getItem('lastName')||'Joe',
+    role:localStorage.getItem('role')||'Joe'
+  }
   const loginReducer = (state: ProfessorType, action: LoginDispatchType) => {
     switch (action.type) {
       case 'login':
