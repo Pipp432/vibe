@@ -1,33 +1,54 @@
-
-import React from 'react'
+'use client'
+import React, { useState, useEffect } from 'react'
 import TableRow from './TableRow'
-function Table({ tableData, toggleModal }: { tableData: any, toggleModal: () => void }) {
+import { CourseSearchFormDataType, CourseType } from '../../../types'
+function Table({ filter, tableData, toggleModal }: { filter: CourseSearchFormDataType, tableData: any, toggleModal: () => void }) {
+  const [filtered, setFiltered] = useState([])
+  
+  useEffect(() => {
+
+    if (filter.courseID !== "" && filter.name === "") {
+      const filtered = tableData.filter((data: CourseType) => (data.courseID === filter.courseID))
+      setFiltered(filtered)
+      return;
+    }
+
+    else if (filter.courseID === "" && filter.name !== "") {
+      const filtered = tableData.filter((data: CourseType) => (data.name=== filter.name))
+      setFiltered(filtered)
+      return;
+    }
+    else{
+      setFiltered(tableData)
+      return;
+    }
+  }, [filter])
   return (
     <>
-    {tableData.length!==0 && <table className='w-[80vw] h-[30vh] shadow-black shadow-md table-fixed'>
-      <tbody>
-        <tr className='bg-primary text-white text-lg'>
-          <th className='w-[10%]'>Course ID</th>
-          <th className='w-[15%]'>Course Name</th>
-          <th className='w-[15%]'>Semester</th>
-          <th className='w-[5%]'>Section</th>
-          <th className='w-[60%]'>Data</th>
-        </tr>
-        {tableData.map((data: any,index:number) => {
-          return <TableRow key={index} courseInformation={{
-            courseID: data[0],
-            major: data[13],
-            faculty: data[14],
-            name: data[12],
-            semester: data[2],
-            year: data[3],
-            section: data[1],
-            isUploaded: data[15]
-          }} toggleModal={toggleModal} />
-        })}
-      </tbody>
-    </table>}
-  </>
+      {tableData.length !== 0 && <table className='w-[80vw] h-[30vh] shadow-black shadow-md table-fixed'>
+        <tbody>
+          <tr className='bg-primary text-white text-lg'>
+            <th className='w-[10%]'>Course ID</th>
+            <th className='w-[15%]'>Course Name</th>
+            <th className='w-[15%]'>Semester</th>
+            <th className='w-[5%]'>Section</th>
+            <th className='w-[60%]'>Data</th>
+          </tr>
+          {tableData.map((data: CourseType, index: number) => {
+            return <TableRow key={index} courseInformation={{
+              courseID: data.courseID,
+              major: data.major,
+              faculty: data.faculty,
+              name: data.name,
+              semester: data.semester,
+              year: data.year,
+              section: data.section,
+              isUploaded: data.isUploaded
+            }} index={index} toggleModal={toggleModal} />
+          })}
+        </tbody>
+      </table>}
+    </>
   )
 }
 

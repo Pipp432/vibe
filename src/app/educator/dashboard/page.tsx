@@ -18,22 +18,28 @@ export default function DashboardPage() {
   const [graph, setGraph] = useState("PIE_CHART");
   const [emotionAndCourseData, setEmotionAndCourseData] = useState([] as any)
   const loginState = useContext(LoginContext)
-  const queryEmotion = async () => {
-    const data = await queryCourses(loginState.emailChula);
-    setEmotionAndCourseData(data)
-  }
+
   useEffect(() => {
+
+    const queryEmotion = async () => {
+      const data = await queryCourses(loginState.emailChula);
+      console.log(data)
+      setEmotionAndCourseData(data)
+
+    }
     if (emotionAndCourseData.length === 0) {
       queryEmotion();
     }
+    console.log(emotionAndCourseData)
   }, [])
+
   return (
     <div className="flex gap-10 pt-32 pl-14 justify-center">
       <div className="flex flex-col gap-10">
         {isAnalysisModalOpen && <AnalysisProgressPopUp closeOverlayHandler={toggleAnalysisModal} />}
         {isEmotionModalOpen && <EmotionalSummaryPopUp closeOverlayHandler={toggleEmotionModal} />}
         {isChangeGraphModalOpen && <ChangeGraphPopUp closeOverlayHandler={toggleChangeGraphModal} changeGraphHandler={setGraph} />}
-        <AnalysisProgress  emotionAndCourseData={emotionAndCourseData} toggleModal={toggleAnalysisModal} />
+        <AnalysisProgress emotionAndCourseData={emotionAndCourseData} toggleModal={toggleAnalysisModal} />
         <EmotionSummary emotionAndCourseData={emotionAndCourseData} toggleModal={toggleEmotionModal} />
       </div>
       <GraphBox graphTitle={"Overall Sentiment of Instructor"} toggleModal={toggleChangeGraphModal}

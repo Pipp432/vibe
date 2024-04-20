@@ -18,7 +18,7 @@ export default function useLogin() {
   const handleUserLogin = async () => {
     try {
       await signInWithEmailAndPassword(auth, username, password)
-      const data: Array<string> = await queryUserData(`SELECT * FROM Professor Where emailChula = '${username}'`);
+      const data: Array<string> = await queryUserData(`SELECT * FROM Staffs Where emailChula = '${username}'`);
       dispatch({ type: "login", payload:{ emailChula: data[0], firstName: data[1], lastName: data[2], role: data[3] } })
       setTimeout(() => {
         

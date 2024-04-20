@@ -13,7 +13,7 @@ function CourseSelector({ onFormComplete }: { onFormComplete: (e: Array<string>)
   const toggleSelectDateHandler = () => { setIsSelectDateOpen(!isSelectDateOpen) }
   const loginState = useContext(LoginContext)
   const query = async () => {
-    const data = await queryCourses(`SELECT * FROM Teaches WHERE emailChula='${loginState.emailChula}'`)
+    const data = await queryCourses(`SELECT * FROM Oversees WHERE emailChula='${loginState.emailChula}'`)
     setCourses(data.courses)
   }
   useEffect(() => {

@@ -5,7 +5,7 @@ import { IoSearch } from "react-icons/io5";
 import { BiSolidDownload } from "react-icons/bi";
 import DatePicker from '../analysis/DatePicker';
 import { CourseSearchFormDataType } from '../../../types';
-function SearchBar() {
+function SearchBar({setFilterTable}:{setFilterTable:(filter:CourseSearchFormDataType)=>void}) {
   const [isFilterOpen, setIsFilterOpen] = useState(false)
   const [formData,setFormData] = useState({} as CourseSearchFormDataType );
   const toggleOpenFilter = () => {
@@ -40,7 +40,7 @@ function SearchBar() {
         </div>}
       </div>
       <button className='w-16 h-16 bg-secondary rounded-lg flex justify-center items-center'
-      onClick={()=>{console.log(formData)}}>
+      onClick={()=>{setFilterTable(formData)}}>
         <IoSearch size={'50'} />
       </button>
       <button className='w-52 px-2 h-16 bg-subTab rounded-lg flex gap-2 text-lg justify-center items-center'>

@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react'
 import EmotionRankChart from "@/components/graph/EmotionRankChart"
 import CardWrapper from "@/components/general/CardWrapper"
 import InformationButton from '@/components/general/InformationButton'
-import { sortObject } from '../../helper/sortObject'
-function EmotionSummary({ emotionAndCourseData, toggleModal }: { emotionAndCourseData: any, toggleModal: () => void }) {
+import Spinner from '@/components/loading/Spinner'
+function EmotionSummary({ emotionAndCourseData, toggleModal }: { emotionAndCourseData: Array<{ courseID: string, emotion: { [key: string]: number } }>, toggleModal: () => void }) {
   return (
 
     <CardWrapper>
@@ -17,13 +17,18 @@ function EmotionSummary({ emotionAndCourseData, toggleModal }: { emotionAndCours
       <div className="w-[30rem] h-[18rem]  overflow-y-scroll">
         <div className="flex flex-col gap-8">
           <div className='flex flex-row gap-5'>
-            <div className="flex flex-col gap-5 w-[25vw]">
+            {emotionAndCourseData.length !== 0 && <div className="flex flex-col gap-5 w-[25vw]">
               {emotionAndCourseData.map((data: any, index: number) => {
-                return <EmotionRankChart key={index} course={data.courseID} data={sortObject(data.OverallEmotion)} />
+                return <EmotionRankChart key={index} course={data.courseID} data={data.emotion} />
               })}
-            </div>
+            </div>}
+
           </div>
         </div>
+
+        {emotionAndCourseData.length === 0 && <div className="grid place-items-center h-full">
+          <Spinner />
+        </div>}
       </div>
 
     </CardWrapper>

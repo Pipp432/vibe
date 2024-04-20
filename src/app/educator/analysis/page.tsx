@@ -16,6 +16,7 @@ export default function AnalysisPage() {
   const queryData = async () => {
     setIsLoading(true)
     const data = await queryCourseInformation(form, loginState);
+    console.log(data)
     setData(data)
     setTimeout(() => {
       setIsLoading(false)
@@ -26,7 +27,7 @@ export default function AnalysisPage() {
   useEffect(() => {
     if (form.length === 2) {
       queryData();
-      queryComment();
+      // queryComment();
     }
   }, [form])
   return (

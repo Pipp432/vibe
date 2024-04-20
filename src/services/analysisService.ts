@@ -22,20 +22,52 @@ export const queryCourseInformation = async (form: Array<string>, loginState: an
   const year = form[0].split("/")[0]
   const semester = form[0].split("/")[1]
   const courseID = form[1]
-  const query = `SELECT Course.name ,Teaches.courseID ,Teaches.EmotionScore, Teaches.ContextnEmotion FROM 
-                Teaches JOIN Course ON Teaches.courseID = Course.courseID WHERE Teaches.emailChula='${loginState.emailChula}'AND Teaches.year = '${year}' AND Teaches.semester='${semester}' AND Teaches.courseID='${courseID}'`
+  const query = `SELECT  Courses.teachingOrder, Courses.courseMaterialsOrder, Courses.facilitiesOrder, Courses.assessmentsOrder FROM 
+                Oversees JOIN Courses ON Oversees.courseID = Courses.courseID WHERE Oversees.emailChula='${loginState.emailChula}'AND Oversees.year = '${year}'
+AND Oversees.semester='${semester}' AND Oversees.courseID='${courseID}'`
   const coursesData = await fetch("http://127.0.0.1:5000/query", { method: "POST", body: query })
   const jsonData = await coursesData.json()
-  const data = jsonData[0]
-  if (data) {
-
-
-    const result = {
-      name: data[0],
-      courseID: data[1],
-      EmotionScore: data[2] * 100,
-      ContextnEmotion: JSON.parse(data[3])
+  const data = jsonData
+  const resultArr = []
+  for (let i = 0; i < 4; i++) {
+    const topThree: Array<string> = data[0][i].split(",")
+    for(let j=0;j<3;j++){
+      topThree[j] = topThree[j].replace(" ","")
     }
+    const response = await fetch("http://127.0.0.1:5000/query",
+      {
+        method: "POST", body: `select ${topThree[0]},${topThree[1]},${topThree[2]} from Courses
+        where courseID = '${courseID}' and section = '1' and semester = '${semester}' and year = '${year}';`
+      })
+    const score = await response.json()
+    const tempResultObj: { [key: string]: any } = {}
+    const tempObj: { [key: string]: number } = {}
+    topThree.forEach((emotion: string, index: number) => {
+      tempObj[emotion.replace("total", "")] = score[0][index]
+    })
+    tempObj["Other"] = 1 - (score[0][0] + score[0][1] + score[0][2])
+    tempResultObj["emotion"] = tempObj
+    resultArr.push(tempResultObj)
+  }
+
+  const queryCourseInfo = `SELECT  Courses.name, Courses.satisfactionScore FROM 
+                Oversees JOIN Courses ON Oversees.courseID = Courses.courseID WHERE Oversees.emailChula='${loginState.emailChula}'AND Oversees.year = '${year}'
+AND Oversees.semester='${semester}' AND Oversees.courseID='${courseID}'`
+
+  const coursesInfo= await fetch("http://127.0.0.1:5000/query", { method: "POST", body: queryCourseInfo })
+  const coursesInfoJson:Array<any> = await coursesInfo.json()
+  console.log(coursesInfoJson)
+  if (data) {
+    const result = {
+      name: coursesInfoJson[0][0],
+      courseID: courseID,
+      EmotionScore: coursesInfoJson[0][1] * 100,
+      teaching: resultArr[0].emotion,
+      courseMaterials: resultArr[1].emotion,
+      facilities: resultArr[2].emotion,
+      assessments: resultArr[3].emotion,
+    }
+    console.log(result)
     return result
   }
   else {
@@ -44,10 +76,10 @@ export const queryCourseInformation = async (form: Array<string>, loginState: an
 }
 
 export const queryComments = async (loginState: any, courseID: string, semester: string, year: string) => {
-  const query = `SELECT * FROM Comment 
-  JOIN Course ON Comment.courseID = Course.courseID 
-  JOIN Teaches ON Comment.courseID = Teaches.courseID
-WHERE Teaches.emailChula = '${loginState.emailChula}' AND Teaches.courseID ='${courseID}' AND Comment.semester='${semester}' AND Comment.year='${year}'`
+  const query = `SELECT * FROM Comments 
+  JOIN Courses ON Comments.courseID = Courses.courseID 
+  JOIN Oversees ON Comments.courseID = Oversees.courseID
+WHERE Oversees.emailChula = '${loginState.emailChula}' AND Oversees.courseID ='${courseID}' AND Comments.semester='${semester}' AND Comment.year='${year}'`
   const commentData = await fetch("http://127.0.0.1:5000/query", { method: "POST", body: query })
   const jsonData = await commentData.json()
   console.log(jsonData)

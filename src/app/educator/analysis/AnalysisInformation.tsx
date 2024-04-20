@@ -4,14 +4,13 @@ import ContextBox from './ContextBox'
 import InformationButton from '@/components/general/InformationButton'
 import { ContextEmotionObjectType } from '../../../../types'
  function AnalysisInformation({ analysisData, openModal }: { analysisData: any, openModal: () => void }) {
-  const contextData:ContextEmotionObjectType= analysisData?.ContextnEmotion?.context
   return (
      <>
       {analysisData.length!==0 &&<div className='flex flex-col gap-10'>
         <div className='text-4xl'>{analysisData?.name?.toLocaleUpperCase()}</div>
         <div className='flex gap-4'>
           <AnalysisGraphBox graphTitle='Evaluations and Emotions' />
-          <ContextBox contextData = {contextData} />
+          <ContextBox contextData = {analysisData} />
         </div>
         <div className='flex gap-32 items-center mt-10' >
           <div className='flex gap-2 items-center'>

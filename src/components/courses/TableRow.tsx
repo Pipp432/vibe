@@ -1,11 +1,10 @@
 import React from 'react'
 import UploadDataButtonSet from './UploadDataButtonSet'
 import { CourseType } from '../../../types'
-function TableRow({ courseInformation, toggleModal }: { courseInformation: CourseType, toggleModal: () => void }) {
-  console.log(courseInformation.isUploaded)
+function TableRow({ index,courseInformation, toggleModal }: {index:number, courseInformation: CourseType, toggleModal: () => void }) {
   return (
 
-    <tr className='text-center'>
+    <tr className='text-center p-2'>
       <td>
         {courseInformation.courseID}
       </td>
@@ -20,7 +19,7 @@ function TableRow({ courseInformation, toggleModal }: { courseInformation: Cours
         {courseInformation.section}
       </td>
       <td className='px-2' >{
-        <UploadDataButtonSet isUploaded={courseInformation.isUploaded} toggleModal={toggleModal}/>
+        <UploadDataButtonSet index ={index} courseData = {courseInformation} isUploaded={courseInformation.isUploaded} toggleModal={toggleModal}/>
       }
       </td>
     </tr>
