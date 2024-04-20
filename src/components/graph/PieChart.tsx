@@ -2,7 +2,11 @@
 import React from "react";
 import { Pie } from "react-chartjs-2";
 
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { Chart } from "chart.js";
 function PieChart({ chartData }: { chartData: any }) {
+
+  Chart.register(ChartDataLabels);
   return (
     <div>
       <Pie
@@ -21,16 +25,28 @@ function PieChart({ chartData }: { chartData: any }) {
                   this.height += 50;
                 };
               }
-            }
+            },
           ]}
         height="600px"
         width="600px"
         options={{
-
           maintainAspectRatio: false,
           plugins: {
-
             datalabels: {
+              anchor:'end',
+              backgroundColor: function(context: any) {
+                return context.dataset.backgroundColor;
+              },
+            borderColor: 'black',
+            borderRadius: 25,
+            borderWidth: 2,
+            color: 'black', 
+            display: function(context: any) {
+              var dataset = context.dataset;
+              var count = dataset.data.length;
+              var value = dataset.data[context.dataIndex];
+              return value > count* 0.5 ;
+            },
               formatter: (value: any, ctx: any) => {
                 let sum = 0;
                 let dataArr = ctx.chart.data.datasets[0].data;
@@ -40,19 +56,19 @@ function PieChart({ chartData }: { chartData: any }) {
                 let percentage = (value * 100 / sum).toFixed(2) + "%";
                 return percentage;
               },
-              color: '#fff',
             },
             title: {
               display: true,
             },
-            legend:{
-              position:'top',
-              labels:{
-                padding:15
+
+            legend: {
+              position: 'top',
+              labels: {
+                padding: 15
               }
             },
-            
-            
+
+
           }
         }}
       />

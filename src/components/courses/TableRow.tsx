@@ -4,7 +4,7 @@ import { CourseType } from '../../../types'
 function TableRow({ index,courseInformation, toggleModal }: {index:number, courseInformation: CourseType, toggleModal: () => void }) {
   return (
 
-    <tr className='text-center p-2'>
+    <tr className='text-center h-20'>
       <td>
         {courseInformation.courseID}
       </td>

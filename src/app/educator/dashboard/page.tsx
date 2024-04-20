@@ -45,3 +45,6 @@ export default function DashboardPage() {
     </div>
   )
 }
+import { Chart } from 'chart.js'; //Changed import
+import * as helpers from 'chart.js/helpers';
+

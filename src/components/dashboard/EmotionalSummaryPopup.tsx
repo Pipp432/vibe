@@ -10,15 +10,15 @@ function EmotionalSummaryPopUp({ closeOverlayHandler }: { closeOverlayHandler: (
           "Emotion Representation"
         }</div>
         <div className='grid grid-cols-2 gap-x-8 gap-y-4 p-4'>
-          <div className='flex gap-2'> <TextToEmojiMap text="gratitude" />{"Gratitude"}</div>
-          <div className='flex gap-2'> <TextToEmojiMap text="approval" />{"Approval"}</div>
-          <div className='flex gap-2'> <TextToEmojiMap text="disapproval" />{"Disapproval"}</div>
-          <div className='flex gap-2'> <TextToEmojiMap text="disappointment" />{"Disappoinment"}</div>
-          <div className='flex gap-2'> <TextToEmojiMap text="admiration" />{"Admiration"}</div>
-          <div className='flex gap-2'> <TextToEmojiMap text="joy" />{"Joy"}</div>
-          <div className='flex gap-2'> <TextToEmojiMap text="anger" />{"Anger"}</div>
-          <div className='flex gap-2'> <TextToEmojiMap text="neutrality" />{"Neutrality"}</div>
-          <div className='flex gap-2'> <TextToEmojiMap text="confusion" />{"Confusion"}</div>
+          <div className='flex gap-2'> <TextToEmojiMap text="Gratitude" />{"Gratitude"}</div>
+          <div className='flex gap-2'> <TextToEmojiMap text="Approval" />{"Approval"}</div>
+          <div className='flex gap-2'> <TextToEmojiMap text="Disapproval" />{"Disapproval"}</div>
+          <div className='flex gap-2'> <TextToEmojiMap text="Disappointment" />{"Disappoinment"}</div>
+          <div className='flex gap-2'> <TextToEmojiMap text="Admiration" />{"Admiration"}</div>
+          <div className='flex gap-2'> <TextToEmojiMap text="Joy" />{"Joy"}</div>
+          <div className='flex gap-2'> <TextToEmojiMap text="Anger" />{"Anger"}</div>
+          <div className='flex gap-2'> <TextToEmojiMap text="Neutrality" />{"Neutrality"}</div>
+          <div className='flex gap-2'> <TextToEmojiMap text="Confusion" />{"Confusion"}</div>
         </div>
 
         <div className='text-sm w-96'>{"These emoticons are based on apple's emoticon set to convey each emotion at a glance the option to toggle between text and emoticon is in the settings page"}</div>

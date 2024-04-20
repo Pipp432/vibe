@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import CardWrapper from '@/components/general/CardWrapper'
 import { IoSearch } from "react-icons/io5";
 import { BiSolidDownload } from "react-icons/bi";
-import DatePicker from '../analysis/DatePicker';
 import { CourseSearchFormDataType } from '../../../types';
 function SearchBar({setFilterTable}:{setFilterTable:(filter:CourseSearchFormDataType)=>void}) {
   const [isFilterOpen, setIsFilterOpen] = useState(false)
@@ -18,10 +17,10 @@ function SearchBar({setFilterTable}:{setFilterTable:(filter:CourseSearchFormData
     if(value.match(/\d+/g)) setFormData({...formData,courseID:value,name:''})
     else setFormData({...formData,name:value, courseID:''})
   }
-  const handleSelectYearSemesterSection =(semester:string, section:number,year:string)=>{
-    setFormData({...formData,section,semester,year})
+  // const handleSelectYearSemesterSection =(semester:string, section:number,year:string)=>{
+  //   setFormData({...formData,section,semester,year})
 
-  }
+  // }
   return (
     <div className='flex flex-row gap-6 w-[full]'>
       <div className='flex flex-col gap-2 w-[70%]'>
@@ -40,7 +39,7 @@ function SearchBar({setFilterTable}:{setFilterTable:(filter:CourseSearchFormData
         </div>}
       </div>
       <button className='w-16 h-16 bg-secondary rounded-lg flex justify-center items-center'
-      onClick={()=>{setFilterTable(formData)}}>
+      onClick={()=>{setFilterTable(formData);console.log(formData)}}>
         <IoSearch size={'50'} />
       </button>
       <button className='w-52 px-2 h-16 bg-subTab rounded-lg flex gap-2 text-lg justify-center items-center'>

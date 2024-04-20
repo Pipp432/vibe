@@ -37,29 +37,43 @@ export const queryCourses = async (username: string) => {
   return resultArr
 }
 
-export const queryChartData = async (courseID: string) => {
+export const queryProfessorChartData = async (emailChula: string) => {
 
   const response = await fetch("http://127.0.0.1:5000/query",
     {
       method: "POST", body: `SELECT 
-  emotion,
-  COUNT(*) AS emotionCount
+  Emotions.emotion,
+  COALESCE(emotion_data.emotionCount, 0) AS emotionCount
 FROM (
+  SELECT 'approval' AS emotion
+  UNION ALL SELECT 'disappointment'
+  UNION ALL SELECT 'joy'
+  UNION ALL SELECT 'anger'
+  UNION ALL SELECT 'neutrality'
+  UNION ALL SELECT 'disapproval'
+  UNION ALL SELECT 'confusion'
+  UNION ALL SELECT 'admiration'
+  UNION ALL SELECT 'gratitude'
+) AS Emotions
+LEFT JOIN (
   SELECT 
     SUBSTRING_INDEX(
       SUBSTRING_INDEX(
-        SUBSTRING(emotionScore FROM LOCATE(':', emotionScore) + 1), 
+        SUBSTRING(c.emotionScore FROM LOCATE(':', c.emotionScore) + 1), 
         '"', 2),
-      '"', -1) AS emotion
+      '"', -1) AS emotion,
+    COUNT(*) AS emotionCount
   FROM 
-    Comments
+    Comments c
+  JOIN
+    Oversees o ON o.CourseID = c.CourseID AND o.Semester = c.Semester AND o.Year = c.Year AND o.Section = c.Section
   WHERE 
-    CourseID = '${courseID}'
-) AS derived_table
-WHERE 
-  emotion IS NOT NULL AND emotion <> ''
-GROUP BY 
-  emotion
+    o.emailChula = '${emailChula}' AND
+    c.emotionScore LIKE '%"%"%' AND 
+    LOCATE(':', c.emotionScore) > 0
+  GROUP BY 
+    emotion
+) AS emotion_data ON Emotions.emotion = emotion_data.emotion
 ORDER BY 
   emotionCount DESC;`
     })

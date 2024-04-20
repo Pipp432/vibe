@@ -5,7 +5,6 @@ function EmotionRankChart({ data, course }: { data: any, course?: String }) {
   const filteredData = dataEntries.filter((a)=>(a[0]!=='Other'))
   const dataArr=filteredData.sort((a,b)=>(b[1]-a[1]))
   
-  console.log(dataArr)
   return (
     <div className='flex flex-row gap-10 justify-between '>
       {course && <div className='ml-10 text-xl'>{course}</div>}

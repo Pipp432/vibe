@@ -1,4 +1,7 @@
 {
+"files": [
+  "node_modules/chart.js-plugin-labels-ed/src/chart-label.ts"
+],
   "compilerOptions": {
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import TableRow from './TableRow'
 import { CourseSearchFormDataType, CourseType } from '../../../types'
 function Table({ filter, tableData, toggleModal }: { filter: CourseSearchFormDataType, tableData: any, toggleModal: () => void }) {
+  console.log(filter)
   const [filtered, setFiltered] = useState([])
   
   useEffect(() => {
@@ -15,6 +16,7 @@ function Table({ filter, tableData, toggleModal }: { filter: CourseSearchFormDat
 
     else if (filter.courseID === "" && filter.name !== "") {
       const filtered = tableData.filter((data: CourseType) => (data.name=== filter.name))
+      console.log(filtered)
       setFiltered(filtered)
       return;
     }
@@ -25,9 +27,9 @@ function Table({ filter, tableData, toggleModal }: { filter: CourseSearchFormDat
   }, [filter])
   return (
     <>
-      {tableData.length !== 0 && <table className='w-[80vw] h-[30vh] shadow-black shadow-md table-fixed'>
+      {tableData.length !== 0 && <table className='w-[80vw]  shadow-black shadow-md table-fixed'>
         <tbody>
-          <tr className='bg-primary text-white text-lg'>
+          <tr className='bg-primary text-white text-lg h-12'>
             <th className='w-[10%]'>Course ID</th>
             <th className='w-[15%]'>Course Name</th>
             <th className='w-[15%]'>Semester</th>

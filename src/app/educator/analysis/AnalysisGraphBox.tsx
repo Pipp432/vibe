@@ -18,8 +18,6 @@ function AnalysisGraphBox({ courseID, graphTitle }: { courseID: string, graphTit
         resultEmotions.push(emotion[0])
         resultEvaluations.push(emotion[1])
       }
-      console.log(resultEvaluations)
-      console.log(resultEmotions)
       setChartData({
         labels: resultEmotions,
         datasets: [

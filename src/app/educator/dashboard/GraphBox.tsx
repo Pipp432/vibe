@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState } from 'react'
+import React, { ReactNode, useContext, useEffect, useState } from 'react'
 import Chart from 'chart.js/auto'
 import PieChart from '@/components/graph/PieChart'
 import BarChart from '@/components/graph/BarChart'
@@ -6,35 +6,55 @@ import CardWrapper from "@/components/general/CardWrapper"
 import { CategoryScale } from "chart.js";
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import RadarChart from '@/components/graph/RadarChart';
-import {analysisData} from '@/data/analysisData'
+import { analysisData } from '@/data/analysisData'
+import { queryProfessorChartData } from '@/services/dashboardService'
+import { LoginContext } from '@/app/contexts/LoginContext'
 function GraphBox({ graphTitle, toggleModal, graph }:
   {
     graphTitle: string, toggleModal: () => void, graph: string,
   }) {
 
-  
+
   Chart.register(CategoryScale);
   Chart.register(ChartDataLabels);
   const [chart, setChart] = useState<ReactNode>();
+  const loginState = useContext(LoginContext)
+  const queryEmotionProfessor = async () => {
+    const resultEmotions = []
+    const resultEvaluations = []
+    const res = await queryProfessorChartData(loginState.emailChula);
+    for (let i = 0; i < res.length; i++) {
+      const emotion = res[i]
+      resultEmotions.push(emotion[0])
+      resultEvaluations.push(emotion[1])
+    }
+  console.log(resultEmotions)
+    setChartData({
+      labels: resultEmotions,
+      datasets: [
+        {
+          label: "Number of evaluations ",
+          data: resultEvaluations,
+          backgroundColor: [
+            "#9CBEFF",
+            "#9CBEFF",
+            "#9CBEFF",
+            "#9CBEFF",
+            "#D9D9D9",
+            "#D23333",
+            "#D23333",
+            "#D23333",
+            "#D23333",
+          ],
+          borderColor: "black",
+          borderWidth: 2
+        }
+      ],
+    })
+  }
   const [chartData, setChartData] = useState({
-    labels: analysisData.map((data: any) => data.emotion),
-    datasets: [
-      {
-        label: "Number of evaluations ",
-        data: analysisData.map((data: any) => data.evaluations),
-        backgroundColor: [
-          "rgba(75,192,192,0.5)",
-          "#50AF95",
-          "#FF0000",
-          "#f3ba2f",
-          "#2a71d0",
-
-        ],
-        borderColor: "black",
-        borderWidth: 2
-      }
-    ], 
-  });
+    datasets: [],
+  } as any);
 
   const handleRenderChart = () => {
     switch (graph) {
@@ -45,8 +65,9 @@ function GraphBox({ graphTitle, toggleModal, graph }:
     }
   }
   useEffect(() => {
+    if(chartData.datasets.length===0)queryEmotionProfessor();
     setChart(handleRenderChart())
-  }, [graph])
+  }, [chartData,graph])
   return (
     <CardWrapper>
       <div className='text-xl flex'>{graphTitle}</div>
