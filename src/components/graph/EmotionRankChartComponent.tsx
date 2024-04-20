@@ -7,9 +7,9 @@ function EmotionRankChartComponent({ part, width, emotion }: { part: number, emo
   const getStyle = () => {
     switch (part) {
       case 1:
-        return 'rounded-tl-full rounded-bl-full bg-blue-800 flex justify-center p-1 w-full '
+        return 'rounded-tl-full h-10 rounded-bl-full bg-blue-800 flex justify-center p-1 w-full '
       case 2:
-        return 'bg-sky-600 flex justify-center p-1 w-full'
+        return 'bg-sky-600 h-10 flex justify-center p-1 w-full'
       case 3:
         return 'bg-sky-400  h-10 flex justify-center p-1 w-full'
       case 4:

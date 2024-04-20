@@ -3,7 +3,6 @@ import React, { useState, useRef } from 'react'
 import ViewDataButtonSet from './ViewDataButtonSet'
 import { CourseType } from '../../../types';
 function UploadDataButtonSet({index,courseData,isUploaded,toggleModal}:{index:number,courseData:CourseType,isUploaded:string,toggleModal:()=>void}) {
-  console.log(index)
   const formElement = useRef(null);
   const [isProcessing, setIsProcessing] = useState(isUploaded==='Processing')
   const [isSuccess,setIsSuccess] = useState(isUploaded==="Yes")

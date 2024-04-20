@@ -49,7 +49,7 @@ function NavigationTab() {
             router.push("/educator/analysis")
           }} />
 
-          <NavigationItem name={"Courses"} onClick={() => {
+          <NavigationItem name={"Upload"} onClick={() => {
 
             router.push("/educator/courses")
             changeIndicatorPosition(2)

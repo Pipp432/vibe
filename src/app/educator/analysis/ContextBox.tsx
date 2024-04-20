@@ -1,10 +1,8 @@
-'use client'
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import CardWrapper from '@/components/general/CardWrapper'
 import ContextItem from '@/components/analysis/ContextItem'
 import { ContextEmotionObjectType } from '../../../../types'
 function ContextBox({ contextData }: { contextData: ContextEmotionObjectType }) {
-  console.log(contextData)
   const emotionDataAndContext =
     Object.fromEntries(
       [["Assessments", contextData.assessments],
@@ -12,14 +10,6 @@ function ContextBox({ contextData }: { contextData: ContextEmotionObjectType }) 
       ["Facilities", contextData.facilities],
       ["Teaching", contextData.teaching],]
     )
-  console.log(emotionDataAndContext)
-  const [data, setData] = useState([] as any)
-  useEffect(() => {
-    if (contextData) {
-      const contexts = (Object.keys(contextData)).filter((context: string) => (context !== 'None'))
-      setData(contexts)
-    }
-  }, [contextData])
 
   return (
     <CardWrapper>

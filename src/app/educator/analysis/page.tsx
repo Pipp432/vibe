@@ -16,7 +16,6 @@ export default function AnalysisPage() {
   const queryData = async () => {
     setIsLoading(true)
     const data = await queryCourseInformation(form, loginState);
-    console.log(data)
     setData(data)
     setTimeout(() => {
       setIsLoading(false)

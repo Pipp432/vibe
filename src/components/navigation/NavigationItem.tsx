@@ -1,5 +1,5 @@
 import React from 'react'
-import { MdDashboard } from "react-icons/md";
+import { MdDashboard, MdFileUpload } from "react-icons/md";
 import { BiSolidBook } from "react-icons/bi";
 import { BsGearFill } from "react-icons/bs";
 import { BsPieChartFill } from "react-icons/bs";
@@ -11,8 +11,8 @@ export default function NavigationItem({name, onClick}:{name:string, onClick:()=
         return <MdDashboard size={iconSize}/>;
       case "Analysis":
         return <BsPieChartFill size={iconSize}/>
-      case "Courses":
-        return <BiSolidBook size={iconSize}/>
+      case "Upload":
+        return <MdFileUpload size={iconSize}/>
       case "Settings":
         return <BsGearFill size={iconSize}/>;
 

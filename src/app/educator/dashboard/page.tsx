@@ -23,14 +23,12 @@ export default function DashboardPage() {
 
     const queryEmotion = async () => {
       const data = await queryCourses(loginState.emailChula);
-      console.log(data)
       setEmotionAndCourseData(data)
 
     }
     if (emotionAndCourseData.length === 0) {
       queryEmotion();
     }
-    console.log(emotionAndCourseData)
   }, [])
 
   return (
