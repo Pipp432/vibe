@@ -12,19 +12,6 @@ function RadarChart({ chartData }: { chartData: any }) {
         width="600px"
         plugins={[
           {
-            id: "increase-legend-spacing",
-            beforeInit(chart) {
-              // Get reference to the original fit function
-              const originalFit = (chart.legend as any).fit;
-              // Override the fit function
-              (chart.legend as any).fit = function fit() {
-                // Call original function and bind scope in order to use `this` correctly inside it
-                originalFit.bind(chart.legend)();
-                this.height += 25;
-              };
-            }
-          },
-          {
             id: 'custom-labels',
             afterDatasetDraw(chart) {
               if (chart.getDatasetMeta(0).data[0] && chart.data.labels) {
@@ -45,46 +32,28 @@ function RadarChart({ chartData }: { chartData: any }) {
                   return deg * (Math.PI / 180);
                 }
 
-
+                ctx.save();
+                
                 for (let i = 0; i < imgArr.length; i++) {
-                  ctx.save()
+
                   const deg = angle * i
                   const rad = degToRad(deg)
                   const xCoor = Math.cos(rad)
-                  console.log(deg)
                   const yCoor = Math.sin(rad)
                   ctx.translate(xCenter, yCenter)
                   ctx.rotate(rad)
-                  ctx.drawImage(imgArr[i], xCoor - 20, yCoor - 290, 30, 30)
-
-                  ctx.restore();
+                  ctx.drawImage(imgArr[i], xCoor , yCoor, 20, 20)
                 }
+                ctx.restore();
 
               }
             }
           }]}
         options={{
-
-          scales: {
-            r: {
-              pointLabels: {
-                display: false
-              }
-            }
-          },
           maintainAspectRatio: false,
           plugins: {
-            legend: {
-              position: 'top'
-            },
             title: {
-              display: false,
-            },
-            datalabels: {
-              color: 'white',
-              backgroundColor:'black',
-              borderRadius:40
-            
+              display: true,
             }
           }
         }}

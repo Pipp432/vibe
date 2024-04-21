@@ -1,7 +1,6 @@
 // src/components/PieChart.js
 import React from "react";
-import { Pie } from "react-chartjs-2";
-
+import { Pie, Doughnut } from "react-chartjs-2";
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { Chart } from "chart.js";
 function PieChart({ chartData }: { chartData: any }) {
@@ -9,7 +8,7 @@ function PieChart({ chartData }: { chartData: any }) {
   Chart.register(ChartDataLabels);
   return (
     <div>
-      <Pie
+      <Doughnut
         data={chartData}
         plugins={
           [
@@ -26,6 +25,36 @@ function PieChart({ chartData }: { chartData: any }) {
                 };
               }
             },
+            {
+              id: 'add-images',
+              afterDatasetDraw(chart) {
+                if (chart.getDatasetMeta(0) && chart.data.labels) {
+
+                  const { ctx, data } = chart
+                  const angle = Math.PI / 180;
+                  const width = 30;
+                  ctx.save()
+                  const imgArr: any = []
+                  for (let i = 0; i < chart.data.labels.length; i++) {
+                    if(chart.data.datasets[0].data[i]===0){
+                    imgArr.push(new Image())  
+                    }else{
+
+                    const img = new Image(20)
+                    img.src = `/images/${chart.data.labels[i]}.jpg`
+                    imgArr.push(img)
+                    }
+                  }
+                  chart.getDatasetMeta(0).data.forEach((_: any, index: number) => {
+                    const x = chart.getDatasetMeta(0).data[index].tooltipPosition(true).x
+                    const y = chart.getDatasetMeta(0).data[index].tooltipPosition(true).y
+                    ctx.beginPath();
+                    ctx.arc(x, y, width / 2, 0, angle * 360, false)
+                    ctx.drawImage(imgArr[index], x - (width / 2), y - (width / 2), width, width)
+                  })
+                }
+              }
+            }
           ]}
         height="600px"
         width="600px"
@@ -33,20 +62,20 @@ function PieChart({ chartData }: { chartData: any }) {
           maintainAspectRatio: false,
           plugins: {
             datalabels: {
-              anchor:'end',
+              anchor: 'end',
               backgroundColor: function(context: any) {
                 return context.dataset.backgroundColor;
               },
-            borderColor: 'black',
-            borderRadius: 25,
-            borderWidth: 2,
-            color: 'black', 
-            display: function(context: any) {
-              var dataset = context.dataset;
-              var count = dataset.data.length;
-              var value = dataset.data[context.dataIndex];
-              return value > count* 0.5 ;
-            },
+              borderColor: 'black',
+              borderRadius: 25,
+              borderWidth: 2,
+              color: 'black',
+              display: function(context: any) {
+                var dataset = context.dataset;
+                var count = dataset.data.length;
+                var value = dataset.data[context.dataIndex];
+                return value > count * 0.5;
+              },
               formatter: (value: any, ctx: any) => {
                 let sum = 0;
                 let dataArr = ctx.chart.data.datasets[0].data;

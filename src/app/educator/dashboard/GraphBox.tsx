@@ -20,13 +20,19 @@ function GraphBox({ graphTitle, toggleModal, graph }:
   const [chart, setChart] = useState<ReactNode>();
   const loginState = useContext(LoginContext)
   const queryEmotionProfessor = async () => {
+    const postiveEmotion = ["approval","joy","gratitude","admiration"]
+    const negativeEmotion = ["disapproval","anger","disappointment","confusion"]
     const resultEmotions = []
     const resultEvaluations = []
+    const colors=[]
     const res = await queryProfessorChartData(loginState.emailChula);
     for (let i = 0; i < res.length; i++) {
       const emotion = res[i]
       resultEmotions.push(emotion[0])
       resultEvaluations.push(emotion[1])
+      if(postiveEmotion.includes(emotion[0])) colors.push("#9CBEFF")
+      else if(negativeEmotion.includes(emotion[0])) colors.push("#D23333")
+      else colors.push("#D9D9D9")
     }
   console.log(resultEmotions)
     setChartData({
@@ -35,17 +41,7 @@ function GraphBox({ graphTitle, toggleModal, graph }:
         {
           label: "Number of evaluations ",
           data: resultEvaluations,
-          backgroundColor: [
-            "#9CBEFF",
-            "#9CBEFF",
-            "#9CBEFF",
-            "#9CBEFF",
-            "#D9D9D9",
-            "#D23333",
-            "#D23333",
-            "#D23333",
-            "#D23333",
-          ],
+          backgroundColor:colors, 
           borderColor: "black",
           borderWidth: 2
         }
@@ -58,7 +54,7 @@ function GraphBox({ graphTitle, toggleModal, graph }:
 
   const handleRenderChart = () => {
     switch (graph) {
-      case "BAR_CHART": return <BarChart chartData={chartData} />;
+      case "BAR_CHART": return <BarChart chartData={chartData} pagename='dashboard' />;
       case "PIE_CHART": return <PieChart chartData={chartData} />;
       case "RADAR_CHART": return <RadarChart chartData={chartData} />;
       default: <PieChart chartData={chartData} />;
