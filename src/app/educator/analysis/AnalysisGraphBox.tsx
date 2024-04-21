@@ -52,7 +52,7 @@ function AnalysisGraphBox({ courseID, graphTitle }: { courseID: string, graphTit
       <div className='p-2'>
         <div className='text-xl flex'>{graphTitle}</div>
         <div className='w-[45vw] flex flex-col justify-center item-center h-[35vh]'>
-          <BarChart chartData={chartData} />
+          <BarChart pagename={"analysis"} chartData={chartData} />
         </div>
       </div>
     </CardWrapper>
