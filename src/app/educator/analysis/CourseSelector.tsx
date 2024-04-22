@@ -4,7 +4,7 @@ import DatePicker from "@/components/analysis/DatePicker"
 import { queryCourses } from '@/services/analysisService';
 import { LoginContext } from '@/app/contexts/LoginContext';
 function CourseSelector({ onFormComplete }: { onFormComplete: (e: Array<string>) => void }) {
-  const [courses, setCourses] = useState([])
+  const [courses, setCourses] = useState([] as Array<string>)
   const [isSelectCourseOpen, setIsSelectCourseOpen] = useState(false);
   const [isSelectDateOpen, setIsSelectDateOpen] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState("")
@@ -14,7 +14,13 @@ function CourseSelector({ onFormComplete }: { onFormComplete: (e: Array<string>)
   const loginState = useContext(LoginContext)
   const query = async () => {
     const data = await queryCourses(`SELECT * FROM Oversees WHERE emailChula='${loginState.emailChula}'`)
-    setCourses(data.courses)
+    const unique:Array<string>= []
+    for(let i=0;i<data.courses.length;i++){
+      if(!unique.includes(data.courses[i])){
+        unique.push(data.courses[i])
+      }
+    }
+    setCourses(unique)
   }
   useEffect(() => {
     query();

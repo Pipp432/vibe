@@ -5,18 +5,24 @@ import CardWrapper from "@/components/general/CardWrapper"
 import { CategoryScale } from "chart.js";
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { queryAnalysisChartData } from '@/services/analysisService'
+import { positiveEmotion, negativeEmotion } from '@/data/emotionType';
 function AnalysisGraphBox({ courseID, graphTitle }: { courseID: string, graphTitle: string }) {
-  
-  const [chartData, setChartData] = useState({datasets:[]} as any)
+
+  const [chartData, setChartData] = useState({ datasets: [] } as any)
   useEffect(() => {
     const queryData = async () => {
       const resultEmotions = []
       const resultEvaluations = []
-      const data= await queryAnalysisChartData(courseID)
+      const colors: Array<string> = []
+      const data = await queryAnalysisChartData(courseID)
       for (let i = 0; i < data.length; i++) {
         const emotion = data[i]
         resultEmotions.push(emotion[0])
         resultEvaluations.push(emotion[1])
+
+        if (positiveEmotion.includes(emotion[0])) colors.push("#9CBEFF")
+        else if (negativeEmotion.includes(emotion[0])) colors.push("#D23333")
+        else colors.push("#D9D9D9")
       }
       setChartData({
         labels: resultEmotions,
@@ -24,24 +30,14 @@ function AnalysisGraphBox({ courseID, graphTitle }: { courseID: string, graphTit
           {
             label: "Number of evaluations ",
             data: resultEvaluations,
-            backgroundColor: [
-              "#9CBEFF",
-              "#9CBEFF",
-              "#9CBEFF",
-              "#9CBEFF",
-              "#D9D9D9",
-              "#D23333",
-              "#D23333",
-              "#D23333",
-              "#D23333",
-            ],
+            backgroundColor: colors,
             borderColor: "black",
             borderWidth: 2
           }
         ],
       })
     }
-    if(chartData.datasets.length===0) queryData();
+    if (chartData.datasets.length === 0) queryData();
 
   }, [chartData])
 

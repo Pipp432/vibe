@@ -9,6 +9,7 @@ import RadarChart from '@/components/graph/RadarChart';
 import { analysisData } from '@/data/analysisData'
 import { queryProfessorChartData } from '@/services/dashboardService'
 import { LoginContext } from '@/app/contexts/LoginContext'
+import { positiveEmotion,negativeEmotion } from '@/data/emotionType'
 function GraphBox({ graphTitle, toggleModal, graph }:
   {
     graphTitle: string, toggleModal: () => void, graph: string,
@@ -20,8 +21,6 @@ function GraphBox({ graphTitle, toggleModal, graph }:
   const [chart, setChart] = useState<ReactNode>();
   const loginState = useContext(LoginContext)
   const queryEmotionProfessor = async () => {
-    const postiveEmotion = ["approval","joy","gratitude","admiration"]
-    const negativeEmotion = ["disapproval","anger","disappointment","confusion"]
     const resultEmotions = []
     const resultEvaluations = []
     const colors=[]
@@ -30,11 +29,10 @@ function GraphBox({ graphTitle, toggleModal, graph }:
       const emotion = res[i]
       resultEmotions.push(emotion[0])
       resultEvaluations.push(emotion[1])
-      if(postiveEmotion.includes(emotion[0])) colors.push("#9CBEFF")
+      if(positiveEmotion.includes(emotion[0])) colors.push("#9CBEFF")
       else if(negativeEmotion.includes(emotion[0])) colors.push("#D23333")
       else colors.push("#D9D9D9")
     }
-  console.log(resultEmotions)
     setChartData({
       labels: resultEmotions,
       datasets: [
