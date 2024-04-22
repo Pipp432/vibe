@@ -2,10 +2,13 @@ import { CourseType } from "../../types"
 export const queryCourses = async (username: any) => {
   const result = await fetch("http://127.0.0.1:5000/query",
     {
-      method: "POST", body: `SELECT Courses.CourseID, 
-Courses.name, Courses.section,Courses.semester,Courses.year,Courses.isUploaded, Courses.department,Courses.faculty FROM Oversees
-JOIN Courses ON Oversees.courseID = Courses.courseID WHERE emailChula='${username}'`
-    })
+      method: "POST", body: `
+select C.courseID, C.name, C.section, C.semester, C.year, C.isUploaded, C.department, C.faculty
+from Oversees S
+inner join Courses C
+on S.courseID = C.courseID and S.section = C.section and C.semester = S.semester and C.year = S.year
+where emailChula = '${username}';
+`    })
   const structuredData:Array<CourseType> = []
   const jsonData:Array<Array<any>> = await result.json()
   jsonData.forEach((dp: any) => {
