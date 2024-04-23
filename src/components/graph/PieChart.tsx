@@ -91,6 +91,7 @@ function PieChart({ chartData }: { chartData: any }) {
             },
 
             legend: {
+              display:false,
               position: 'top',
               labels: {
                 padding: 15

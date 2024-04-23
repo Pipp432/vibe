@@ -22,7 +22,7 @@ export default function RootLayout({
             <div className="flex  items-center flex-row-reverse absolute w-[83vw]">
               <Profile />
           
-          <TutorialButton />
+          {/* <TutorialButton /> */}
             </div>
             {children}
           </div>

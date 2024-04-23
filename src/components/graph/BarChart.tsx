@@ -58,10 +58,16 @@ function BarChart({ chartData,pagename='dashboard' }: { chartData: any,pagename:
             },
             plugins: {
               datalabels: {
+                color:'white',
+                backgroundColor:'black',
+                borderRadius:20
               },
               title: {
                 display: true,
               },
+              legend:{
+                display:false
+              }
             }
           }
         }
