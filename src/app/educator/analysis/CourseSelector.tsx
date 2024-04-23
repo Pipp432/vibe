@@ -42,7 +42,7 @@ function CourseSelector({ onFormComplete }: { onFormComplete: (e: Array<string>)
           }
         </div>
         <div className='flex flex-col gap-2 justify-start'>
-          <button onClick={toggleSelectDateHandler} className='flex justify-center bg-secondary text-xl rounded-lg w-[12vw] p-2'>{selectedDate ? selectedDate : 'Select Date'}</button>
+          <button onClick={toggleSelectDateHandler} className='flex justify-center bg-secondary text-xl rounded-lg w-[12vw] p-2'>{selectedDate ? selectedDate : 'Select Semester'}</button>
 
           {isSelectDateOpen &&
             <div className='absolute translate-y-12'>
@@ -53,8 +53,8 @@ function CourseSelector({ onFormComplete }: { onFormComplete: (e: Array<string>)
             </div>}
           {(selectedDate === '' || selectedCourse === '') &&
             <div className='grid place-items-center h-[70vh] text-3xl ml-[10vw]'>
-              {selectedDate === '' && selectedCourse === '' && <div>{"Please select date and course"}</div>}
-              {selectedDate === '' && selectedCourse !== '' && <div>{"Please select date"}</div>}
+              {selectedDate === '' && selectedCourse === '' && <div>{"Please select course and semester"}</div>}
+              {selectedDate === '' && selectedCourse !== '' && <div>{"Please select semester"}</div>}
               {selectedCourse === '' && selectedDate !== '' && <div>{"Please select course"}</div>}
             </div>
           }
