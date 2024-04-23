@@ -1,4 +1,5 @@
 'use client'
+import { useEffect } from "react";
 import Image from "next/image";
 import logo from "../../../public/images/logo.png";
 import LoginInput from "../../components/login/LoginInput";
@@ -21,7 +22,7 @@ export default function LoginPage() {
         </div>
 
         <div className='bg-primary h-full w-[40%]  p-10'>
-          <div className='flex mt-36 flex-col gap-16'>
+          <div className='flex mt-28 flex-col gap-16'>
             <LoginInput isPassword={false} title='Username'
               onChangeHandler={loginFunction.handleUsernameChange}
               style={loginState.isError ? InputStyles.error : InputStyles.normal} />

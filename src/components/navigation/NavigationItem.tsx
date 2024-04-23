@@ -18,7 +18,7 @@ export default function NavigationItem({name, onClick}:{name:string, onClick:()=
     }
   }
   return (
-    <div className='flex text-white text-header items-center gap-3 w-64' onMouseDown={onClick}>
+    <div className='flex text-white text-header items-center gap-[1vw] ml-[1vw] w-64' onMouseDown={onClick}>
       <div>{getIcon()}</div>
       <div className='cursor-pointer'>{name}</div>
     </div>

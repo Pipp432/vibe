@@ -6,7 +6,8 @@ import { getAuth } from 'firebase/auth';
 import { LoginContext } from '@/app/contexts/LoginContext';
 import { ProfessorType } from '../../../types';
 function Profile() {
-  
+
+  const loginState: ProfessorType = useContext(LoginContext)
   const [isOpen, setIsOpen] = useState(false)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const handleToggleMenu = () => {
@@ -18,12 +19,15 @@ function Profile() {
     try {
 
       const auth = getAuth();
-      if (auth) setIsLoggedIn(true)
+      if (auth) {
+        setIsLoggedIn(true)
+
+
+      }
     } catch (error) {
       setIsLoggedIn(false)
     }
   }, [])
-  const loginState:ProfessorType = useContext(LoginContext)
   console.log(loginState)
   return (
     <div className='flex flex-col items-end p-4'>
@@ -31,7 +35,7 @@ function Profile() {
         <div className='rounded-full bg-black h-20 w-20'></div>
         <div className='flex flex-col'>
           <div className='text-xl'>{isLoggedIn ? `${loginState?.firstName} ${loginState?.lastName}` : "Please login"}</div>
-          {isLoggedIn && <div className='text-lg'>{loginState?.role}</div>}   
+          {isLoggedIn && <div className='text-lg'>{loginState?.role}</div>}
         </div>
         <button className="" onClick={handleToggleMenu}>
           <IoMdArrowDropdown size={60} />

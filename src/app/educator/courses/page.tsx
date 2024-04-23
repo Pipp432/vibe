@@ -17,11 +17,12 @@ function CoursesPage() {
   const query = async () => {
     const data = await queryCourses(loginState.emailChula)
     setTableData(data)
+    console.log(tableData)
     setIsLoading(false)
   }
   useEffect(() => {
     if (tableData.length === 0 && loginState.emailChula != "") query();
-  })
+  },[tableData])
   const handleSetFilter= (filter:any)=>{
     setTableFilter(filter)
   }

@@ -3,31 +3,35 @@ import React, { useState, useEffect } from 'react'
 import TableRow from './TableRow'
 import { CourseSearchFormDataType, CourseType } from '../../../types'
 function Table({ filter, tableData, toggleModal }: { filter: CourseSearchFormDataType, tableData: any, toggleModal: () => void }) {
-  console.log(filter)
   const [filtered, setFiltered] = useState([])
-  
-  useEffect(() => {
 
+  useEffect(() => {
     if (filter.courseID !== "" && filter.name === "") {
-      const filtered = tableData.filter((data: CourseType) => (data.courseID === filter.courseID))
+      const filtered = tableData.filter((data: CourseType) => {
+        const length = filter.courseID?.length
+        return data.courseID.slice(0, length) === filter.courseID
+      })
       setFiltered(filtered)
       return;
     }
 
     else if (filter.courseID === "" && filter.name !== "") {
-      const filtered = tableData.filter((data: CourseType) => (data.name=== filter.name))
-      console.log(filtered)
+      const filtered = tableData.filter((data: CourseType) => {
+        const length = filter.name?.length
+        return data.name.slice(0,length) === filter.name
+
+      })
       setFiltered(filtered)
       return;
     }
-    else{
+    else {
       setFiltered(tableData)
       return;
     }
-  }, [filter])
+  }, [filter, tableData])
   return (
     <>
-      {tableData.length !== 0 && <table className='w-[80vw]  shadow-black shadow-md table-fixed'>
+      {filtered.length !== 0 && <table className='w-[80vw]  shadow-black shadow-md table-fixed'>
         <tbody>
           <tr className='bg-primary text-white text-lg h-12'>
             <th className='w-[10%]'>Course ID</th>
@@ -36,7 +40,7 @@ function Table({ filter, tableData, toggleModal }: { filter: CourseSearchFormDat
             <th className='w-[5%]'>Section</th>
             <th className='w-[60%]'>Data</th>
           </tr>
-          {tableData.map((data: CourseType, index: number) => {
+          {filtered.map((data: CourseType, index: number) => {
             return <TableRow key={index} courseInformation={{
               courseID: data.courseID,
               major: data.major,
