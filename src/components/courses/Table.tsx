@@ -4,30 +4,63 @@ import TableRow from './TableRow'
 import { CourseSearchFormDataType, CourseType } from '../../../types'
 function Table({ filter, tableData, toggleModal }: { filter: CourseSearchFormDataType, tableData: any, toggleModal: () => void }) {
   const [filtered, setFiltered] = useState([])
+  console.log(filter)
+  const filterBySem = (arr: any) => {
+    if (filter.semester !== "") {
+      const filterSem = arr.filter((data: any) => (data.semester === filter.semester))
+      filterByYear(filterSem)
+    } else {
+      filterByYear(arr)
+    }
+  }
+  const filterByYear = (arr: any) => {
+    if (filter.year !== "") {
+      const filterYear = arr.filter((data: any) => (data.year === filter.year))
+      filterBySec(filterYear)
+    }
+    else {
 
-  useEffect(() => {
+      filterBySec(arr)
+    }
+  }
+  const filterBySec = (arr: any) => {
+    if (filter.section !== -1) {
+      const filterSec = arr.filter((data: any) => (data.section === filter.section))
+      setFiltered(filterSec)
+    } else {
+
+      setFiltered(arr)
+    }
+
+  }
+  const filterCourses = () => {
     if (filter.courseID !== "" && filter.name === "") {
       const filtered = tableData.filter((data: CourseType) => {
         const length = filter.courseID?.length
         return data.courseID.slice(0, length) === filter.courseID
       })
-      setFiltered(filtered)
+      filterBySem(filtered)
       return;
     }
 
     else if (filter.courseID === "" && filter.name !== "") {
       const filtered = tableData.filter((data: CourseType) => {
         const length = filter.name?.length
-        return data.name.slice(0,length) === filter.name
+        return data.name.slice(0, length) === filter.name
 
       })
-      setFiltered(filtered)
+
+      filterBySem(filtered)
       return;
     }
     else {
-      setFiltered(tableData)
-      return;
+
+      filterBySem(tableData)
     }
+  }
+
+  useEffect(() => {
+    filterCourses();
   }, [filter, tableData])
   return (
     <>
