@@ -13,11 +13,11 @@ function OverallScorePopup({ closeOverlayHandler }: { closeOverlayHandler: () =>
             <div>Very positive</div>
           </div>
           <div className='flex gap-4 items-center'>
-            <div className='bg-yellow-300 text-white p-2 text-center w-20'>80-61</div>
+            <div className='bg-yellow-300 text-white p-2 text-center w-20'>80-51</div>
             <div>Positive</div>
           </div>
           <div className='flex gap-4 items-center'>
-            <div className='bg-orange-500 text-white p-2 text-center w-20'>60-41</div>
+            <div className='bg-orange-500 text-white p-2 text-center w-20'>49-41</div>
             <div>Negative</div>
           </div>
           <div className='flex gap-4 items-center'>
