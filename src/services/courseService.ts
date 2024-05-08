@@ -30,12 +30,13 @@ where emailChula = '${username}';
 
 export const deleteCourseUpload = async (courseID: string, section: number, semester: string, year: string) => {
 
-  const result = await fetch("http://127.0.0.1:5000/query",
+  const result = await fetch("http://127.0.0.1:5000/update",
     {
-      method: "POST", body: `UPDATE Courses SET isUploaded='No' WHERE courseID='${courseID}' AND section='${section}' AND 
-semester='${semester}' AND year='${year}'`
+      method: "POST", body: `UPDATE Courses SET isUploaded='No' WHERE courseID=${courseID} AND section=${section} AND 
+semester=${semester} AND year=${year}`
     })
   const jsonData = await result.json()
   const data = jsonData
+  console.log(data)
   return data
 }

@@ -21,13 +21,13 @@ function AccountSettingsPage() {
           </div>
           <div className='flex mt-[10vh] ml-[10vw] gap-x-48'>
             <div className=' flex flex-col item-start  gap-y-10'>
-              <AccountItem title='Firstname' info='Johnathan' />
-              <AccountItem title='Contact Email' info='HelloWorld@gmail.com' />
+              <AccountItem title='Firstname' info='Pipp' />
+              <AccountItem title='Contact Email' info='pipp.n@chula.ac.th.com' />
               <AccountItem title='University' info='Chulalongkorn University' />
               <AccountItem title='Department' info='Electrical Engineering' />
             </div>
             <div className=' flex flex-col item-start gap-x-72 gap-y-10'>
-              <AccountItem title='Surname' info='Smithsonian' />
+              <AccountItem title='Surname' info='Narva' />
               <AccountItem title='Phone Number' info='+66892245258' />
 
               <AccountItem title='Faculty' info='Engineering' />

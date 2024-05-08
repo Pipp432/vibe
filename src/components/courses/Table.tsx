@@ -4,7 +4,7 @@ import TableRow from './TableRow'
 import { CourseSearchFormDataType, CourseType } from '../../../types'
 function Table({ filter, tableData, toggleModal }: { filter: CourseSearchFormDataType, tableData: any, toggleModal: () => void }) {
   const [filtered, setFiltered] = useState([])
-  console.log(filter)
+  console.log(tableData)
   const filterBySem = (arr: any) => {
     if (filter.semester !== "") {
       const filterSem = arr.filter((data: any) => (data.semester === filter.semester))

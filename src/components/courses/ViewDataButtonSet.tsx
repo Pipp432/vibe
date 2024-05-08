@@ -6,7 +6,8 @@ import { deleteCourseUpload } from '@/services/courseService'
 function UploadDataButtonSet({ courseData }: { courseData: CourseType }) {
   const router = useRouter()
   const reuploadHandler = async () => {
-    await deleteCourseUpload(courseData.courseID, courseData.section, courseData.semester, courseData.year);
+    const data = await deleteCourseUpload(courseData.courseID, courseData.section, courseData.semester, courseData.year);
+    console.log(data)
   }
   return (
     <div className='flex flex-row gap-3 items-center justify-end'>

@@ -15,6 +15,9 @@ function SearchBar({ setFilterTable }: { setFilterTable: (filter: CourseSearchFo
   const toggleOpenFilter = () => {
     setIsFilterOpen(!isFilterOpen)
     setFormData({ section: -1, semester: "", year: "" })
+    setSelectedSection(-1)
+    setSelectedYear("")
+    setSelectedSemester("")
   }
 
   const handleChangeSearch = (e: React.FormEvent<HTMLInputElement>) => {
@@ -28,7 +31,6 @@ function SearchBar({ setFilterTable }: { setFilterTable: (filter: CourseSearchFo
   }
   useEffect(() => {
     handleSelectYearSemesterSection(selectedSemester, selectedSection, selectedYear)
-    console.log(formData)
   }, [selectedSemester, selectedSection, selectedYear])
   return (
     <div className='flex flex-row gap-6 w-[full]'>
@@ -85,7 +87,7 @@ function SearchBar({ setFilterTable }: { setFilterTable: (filter: CourseSearchFo
         </div>}
       </div>
       <button className='w-16 h-16 bg-secondary rounded-lg flex justify-center items-center'
-        onClick={() => { setFilterTable(formData); console.log(formData) }}>
+        onClick={() => { setFilterTable(formData);  }}>
         <IoSearch size={'50'} />
       </button>
       <button className='w-52 px-2 h-16 bg-subTab rounded-lg flex gap-2 text-lg justify-center items-center'>
